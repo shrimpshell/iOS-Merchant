@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D10E45B6216BB63700D0848F /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = D10E45B5216BB63700D0848F /* traffic.png */; };
+		D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */; };
+		D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */; };
 		D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12463BD21644D9500190E42 /* AppDelegate.swift */; };
 		D12463C021644D9500190E42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12463BF21644D9500190E42 /* ViewController.swift */; };
 		D12463C321644D9500190E42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12463C121644D9500190E42 /* Main.storyboard */; };
 		D12463C521644D9600190E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12463C421644D9600190E42 /* Assets.xcassets */; };
 		D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12463C621644D9600190E42 /* LaunchScreen.storyboard */; };
+		D16029CF216F2277006D1BC1 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16029CE216F2277006D1BC1 /* Checkout.swift */; };
+		D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16029D6216F4E83006D1BC1 /* Reservation.swift */; };
+		D186E3CB216B24D7004F864E /* room.png in Resources */ = {isa = PBXBuildFile; fileRef = D186E3CA216B24D7004F864E /* room.png */; };
+		D186E3CD216B24E4004F864E /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = D186E3CC216B24E4004F864E /* checkout.png */; };
 		D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18836E72167D2BD0051A041 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D10E45B5216BB63700D0848F /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
+		D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
+		D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		D12463BA21644D9500190E42 /* iOS-Merchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Merchant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12463BD21644D9500190E42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D12463BF21644D9500190E42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,6 +33,10 @@
 		D12463C421644D9600190E42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12463C721644D9600190E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12463C921644D9600190E42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D16029CE216F2277006D1BC1 /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		D16029D6216F4E83006D1BC1 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		D186E3CA216B24D7004F864E /* room.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room.png; sourceTree = "<group>"; };
+		D186E3CC216B24E4004F864E /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
 		D18836E72167D2BD0051A041 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D1103EA7216C762400B57132 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D12463B121644D9500190E42 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +78,13 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
-				D12463BD21644D9500190E42 /* AppDelegate.swift */,
+				D186E3CE216B24EC004F864E /* Image */,
+				D1103EA7216C762400B57132 /* View */,
 				D18836E62167D2920051A041 /* Controller */,
 				D12463C121644D9500190E42 /* Main.storyboard */,
+				D16029CE216F2277006D1BC1 /* Checkout.swift */,
+				D16029D6216F4E83006D1BC1 /* Reservation.swift */,
+				D12463BD21644D9500190E42 /* AppDelegate.swift */,
 				D12463C421644D9600190E42 /* Assets.xcassets */,
 				D12463C621644D9600190E42 /* LaunchScreen.storyboard */,
 				D12463C921644D9600190E42 /* Info.plist */,
@@ -66,11 +92,22 @@
 			path = "iOS-Merchant";
 			sourceTree = "<group>";
 		};
+		D186E3CE216B24EC004F864E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D10E45B5216BB63700D0848F /* traffic.png */,
+				D186E3CC216B24E4004F864E /* checkout.png */,
+				D186E3CA216B24D7004F864E /* room.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		D18836E62167D2920051A041 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D12463BF21644D9500190E42 /* ViewController.swift */,
 				D18836E72167D2BD0051A041 /* ProfileViewController.swift */,
+				D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,9 +170,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D186E3CD216B24E4004F864E /* checkout.png in Resources */,
+				D186E3CB216B24D7004F864E /* room.png in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
 				D12463C321644D9500190E42 /* Main.storyboard in Resources */,
+				D10E45B6216BB63700D0848F /* traffic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +188,11 @@
 			files = (
 				D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */,
 				D12463C021644D9500190E42 /* ViewController.swift in Sources */,
+				D16029CF216F2277006D1BC1 /* Checkout.swift in Sources */,
 				D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */,
+				D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */,
+				D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */,
+				D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
