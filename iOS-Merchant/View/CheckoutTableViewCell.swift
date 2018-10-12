@@ -39,26 +39,33 @@ class CheckoutTableViewCell: UITableViewCell {
             // 金額
             var price = 0
             var roomInfo: String = ""
+            var instantInfo: String = ""
             for checkouts in (reservation?.checkout)! {
-                price += checkouts.price
+                price += checkouts.price * checkouts.roomQuantity
                 roomInfo += "\(checkouts.roomTypeName) x \(checkouts.roomQuantity) \n"
             }
+            // 即時服務
+            for instants in (reservation?.instant)! {
+                instantInfo += "\(instants.name) x \(instants.quantity)"
+                price += instants.price * instants.quantity
+            }
             roomListLabel.text = roomInfo
+            instantLabel.text = instantInfo
             priceLabel.text = "$\(price)"
-            // 還差即時服務
+            
             
             // 綁定Action 付款
-            statusLabel.isUserInteractionEnabled = true
-            let changePaymentStatus = UITapGestureRecognizer(target: self, action: #selector(changeStatus))
-            statusLabel.addGestureRecognizer(changePaymentStatus)
+//            statusLabel.isUserInteractionEnabled = true
+//            let changePaymentStatus = UITapGestureRecognizer(target: self, action: #selector(changeStatus))
+//            statusLabel.addGestureRecognizer(changePaymentStatus)
 
         }
     }
     
-    @objc
-    func changeStatus() {
-        print("\(self.reservationLabel.text!), \(String(describing: self.statusLabel.text!))")
-    }
+//    @objc
+//    func changeStatus() {
+//        print("\(self.reservationLabel.text!), \(String(describing: self.statusLabel.text!))")
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

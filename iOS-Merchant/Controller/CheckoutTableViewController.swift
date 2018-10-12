@@ -10,11 +10,14 @@ import UIKit
 
 class CheckoutTableViewController: UITableViewController {
     var checkouts = [Checkout]()
+    var instants = [Instant]()
     var reservation = [Reservation]()
+    var delegate: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        delegate = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,15 +34,26 @@ class CheckoutTableViewController: UITableViewController {
         
         checkouts += [one, two, three, four, five, six]
         
+        let aMeal = Instant(name: "A餐", quantity: 2, price: 100, roomGroup: "123")
+        let bMeal = Instant(name: "B餐", quantity: 1, price: 300, roomGroup: "567")
+        let cMeal = Instant(name: "C餐", quantity: 4, price: 200, roomGroup: "234")
+        
+        instants += [aMeal, bMeal, cMeal]
+        
         // 重構結構
         for checkout in checkouts {
-            reservation.append(Reservation(id: checkout.roomGroup, checkout: []))
+            reservation.append(Reservation(id: checkout.roomGroup, checkout: [], instant: []))
         }
         reservation = reservation.removeDeuplicates()
         for (index, _) in reservation.enumerated() {
             for checkout in checkouts {
                 if checkout.roomGroup == reservation[index].id {
                     reservation[index].checkout.append(checkout)
+                }
+            }
+            for instant in instants {
+                if instant.roomGroup == reservation[index].id {
+                    reservation[index].instant.append(instant)
                 }
             }
         }
@@ -70,6 +84,17 @@ class CheckoutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 216
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "編號：\(reservation[indexPath.row].checkout[0].roomGroup)", message: "確定付款？", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "確定", style: .default) {
+            (action) in
+        })
+        alertController.addAction(UIAlertAction(title: "取消", style: .destructive) {
+            (action) in
+        })
+        present(alertController, animated: true)
     }
     
 //    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
