@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var employeeId: String = "1"
+    var employeeId: String = "5"
 
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             username == "room" && password == "1234" ||
             username == "front" && password == "1234"
         // 登入後員工編號要撈出來
-        // employeeId = "YOUR_EMPLOYEE_ID"
+        employeeId = "4"
         
         guard isEmployee else {
             let alertController = UIAlertController(title: "帳號資料錯誤", message:
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             return
         }
         
-        performSegue(withIdentifier: "loginSuccessful", sender: username)
+        performSegue(withIdentifier: "loginSuccessful", sender: nil)
         username = ""
         password = ""
         usernameTF.text = ""
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navVC = segue.destination as? UINavigationController
         let controller = navVC?.viewControllers.first as! ProfileViewController
-//        controller.employeeId = employeeId
+        controller.employeeId = employeeId
     }
     
     @IBAction func logout(_ segue: UIStoryboardSegue) {
