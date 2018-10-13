@@ -24,14 +24,18 @@ class CheckoutTableViewCell: UITableViewCell {
             reservationLabel.backgroundColor = .yellow
             // 付款狀態
             switch reservation?.checkout[0].roomReservationStatus {
-            case "2":
+            case "3":
                 statusLabel.text = "已付款"
+                statusLabel.backgroundColor = .gray
+            case "2":
+                statusLabel.text = "待付款"
                 statusLabel.backgroundColor = .green
             case "1":
-                statusLabel.text = "待付款"
+                statusLabel.text = "未付款"
                 statusLabel.backgroundColor = .yellow
             default:
-                statusLabel.text = "未付款"
+                statusLabel.text = "已訂房"
+                statusLabel.textColor = .white
                 statusLabel.backgroundColor = .red
             }
             // 日期
@@ -52,7 +56,6 @@ class CheckoutTableViewCell: UITableViewCell {
             roomListLabel.text = roomInfo
             instantLabel.text = instantInfo
             priceLabel.text = "$\(price)"
-            
             
             // 綁定Action 付款
 //            statusLabel.isUserInteractionEnabled = true
