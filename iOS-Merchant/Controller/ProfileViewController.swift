@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    var employeeId: String?
+    var employee: CDepartment?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -20,33 +20,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getEmployeeInfo()
-    }
-
-    func getEmployeeInfo() {
-        switch employeeId {
-        case "4":
-            insertFrontDeskButtons()
-        default:
-            print("other employee")
+        if let employee = employee {
+            employee.showButtons(view: view, stackView: tagStackView, viewController: self)
         }
-    }
-    
-    func insertFrontDeskButtons() {
-        let checkout = UIImageView(frame: CGRect(x: 0, y: tagStackView.frame.maxY + 20, width: 100, height: 100))
-        checkout.image = UIImage(named: "checkout.png")
-        view.addSubview(checkout)
-        let tabCheckout = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.gotoCheckoutPage))
-        checkout.addGestureRecognizer(tabCheckout)
-        checkout.isUserInteractionEnabled = true
-        
-        let traffic = UIImageView(frame: CGRect(x: checkout.frame.maxX, y: tagStackView.frame.maxY + 20, width: 100, height: 100))
-        traffic.image = UIImage(named: "traffic.png")
-        view.addSubview(traffic)
-        let tabTraffic = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.gotoTrafficPage))
-        traffic.addGestureRecognizer(tabTraffic)
-        traffic.isUserInteractionEnabled = true
-        
     }
     
     @objc func gotoCheckoutPage() {
@@ -55,6 +31,34 @@ class ProfileViewController: UIViewController {
     
     @objc func gotoTrafficPage() {
         print("go to checkout page")
+    }
+    
+    @objc func gotoEventPage() {
+        print("go to event page")
+    }
+    
+    @objc func gotoFoodPage() {
+        print("go to food page")
+    }
+    
+    @objc func gotoCleanPage() {
+        print("go to clean page")
+    }
+    
+    @objc func gotoEditPage() {
+        print("go to edit page")
+    }
+    
+    @objc func gotoEmployeePage() {
+        print("go to employee page")
+    }
+    
+    @objc func gotoRoomPage() {
+        print("go to room page")
+    }
+    
+    @objc func gotoRoomViewPage() {
+        print("go to room view page")
     }
 
     /*
