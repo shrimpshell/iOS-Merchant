@@ -31,11 +31,10 @@ class ViewController: UIViewController {
         // 判斷員工帳號是否有效
         let isEmployee = username == "manager" && password == "1234" ||
             username == "clean" && password == "1234" ||
-            username == "dining" && password == "1234" ||
+            username == "food" && password == "1234" ||
             username == "room" && password == "1234" ||
             username == "front" && password == "1234"
         // 登入後員工編號要撈出來
-        employeeId = "4"
         
         guard isEmployee else {
             let alertController = UIAlertController(title: "帳號資料錯誤", message:
@@ -44,6 +43,19 @@ class ViewController: UIViewController {
             
             self.present(alertController, animated: true, completion: nil)
             return
+        }
+        
+        switch username {
+        case "clean":
+            employeeId = "1"
+        case "room":
+            employeeId = "2"
+        case "food":
+            employeeId = "3"
+        case "front":
+            employeeId = "4"
+        default:
+            employeeId = "5"
         }
         
         performSegue(withIdentifier: "loginSuccessful", sender: nil)
@@ -56,7 +68,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navVC = segue.destination as? UINavigationController
         let controller = navVC?.viewControllers.first as! ProfileViewController
-        controller.employeeId = employeeId
+        controller.employee = CDepartment(departmentId: Int(employeeId)!)
     }
     
     @IBAction func logout(_ segue: UIStoryboardSegue) {
