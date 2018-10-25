@@ -59,7 +59,7 @@ class CDepartment: PDepartment {
             let tabTraffic = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoTrafficPage))
             traffic.addGestureRecognizer(tabTraffic)
             traffic.isUserInteractionEnabled = true
-        default:
+        case 5:
             let roomViews = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             roomViews.image = UIImage(named: "room.png")
             view.addSubview(roomViews)
@@ -80,6 +80,8 @@ class CDepartment: PDepartment {
             let tabEmployee = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoEmployeePage))
             employees.addGestureRecognizer(tabEmployee)
             employees.isUserInteractionEnabled = true
+        default:
+            break
         }
     }
     

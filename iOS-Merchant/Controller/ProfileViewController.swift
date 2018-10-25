@@ -9,7 +9,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    var employee: CDepartment?
+    var department: CDepartment?
+    var employee: Employee?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -20,8 +21,15 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let employee = employee {
-            employee.showButtons(view: view, stackView: tagStackView, viewController: self)
+        print(department!.departmentId)
+        if department != nil {
+            department!.showButtons(view: view, stackView: tagStackView, viewController: self)
+        }
+        if employee != nil {
+            nameLabel.text = "\(employee!.name)"
+            emailLabel.text = "\(employee!.email)"
+            phoneLabel.text = "\(employee!.phone)"
+            
         }
     }
     
