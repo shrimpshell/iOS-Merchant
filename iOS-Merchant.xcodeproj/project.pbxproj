@@ -29,7 +29,6 @@
 		D1DE9501217AC00200B6CE63 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = D1DE9500217AC00200B6CE63 /* food.png */; };
 		D1DE9503217AC10000B6CE63 /* event.png in Resources */ = {isa = PBXBuildFile; fileRef = D1DE9502217AC10000B6CE63 /* event.png */; };
 		D1DE9505217AC13100B6CE63 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE9504217AC13100B6CE63 /* Department.swift */; };
-		D1DE9571217B3F8A00B6CE63 /* CommonTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE9570217B3F8A00B6CE63 /* CommonTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +58,6 @@
 		D1DE9500217AC00200B6CE63 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 		D1DE9502217AC10000B6CE63 /* event.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event.png; sourceTree = "<group>"; };
 		D1DE9504217AC13100B6CE63 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		D1DE9570217B3F8A00B6CE63 /* CommonTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +163,6 @@
 				D16029D821707807006D1BC1 /* Instant.swift */,
 				D16029D6216F4E83006D1BC1 /* Reservation.swift */,
 				D1DE9504217AC13100B6CE63 /* Department.swift */,
-				D1DE9570217B3F8A00B6CE63 /* CommonTask.swift */,
 				D1A9EF6B2180571800E0B9AD /* Employee.swift */,
 			);
 			path = Model;
@@ -292,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */,
-				D1DE9571217B3F8A00B6CE63 /* CommonTask.swift in Sources */,
 				D16029D921707807006D1BC1 /* Instant.swift in Sources */,
 				D1A9EF6C2180571800E0B9AD /* Employee.swift in Sources */,
 				D1DE9505217AC13100B6CE63 /* Department.swift in Sources */,
