@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 
     @IBAction func loginBtnPressed(_ sender: UIButton) {
         let employeeServlet = "/EmployeeServlet"
-        let employeeTask = CommonTask(servlet: employeeServlet)
+        let employeeTask = EmployeeAuth(servlet: employeeServlet)
         
         var email: String = usernameTF.text!, password: String = passwordTF.text!
         guard email.count != 0 && password.count != 0 else {

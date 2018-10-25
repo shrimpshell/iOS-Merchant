@@ -18,71 +18,44 @@ class CDepartment: PDepartment {
     
     func showButtons(view: UIView, stackView: UIStackView, viewController: UIViewController) {
         let edit = UIImageView(frame: CGRect(x: 0, y: stackView.frame.maxY + 20, width: 90, height: 90))
-        edit.image = UIImage(named: "edit.png")
-        view.addSubview(edit)
-        let tabEdit = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoEditPage))
-        edit.addGestureRecognizer(tabEdit)
-        edit.isUserInteractionEnabled = true
+        createButton(imageBtn: edit, view: view, viewController: viewController, imageName: "edit.png", selector: #selector(ProfileViewController.gotoEditPage))
+        
         switch self.departmentId {
         case 1:
             let clean = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            clean.image = UIImage(named: "clean.png")
-            view.addSubview(clean)
-            let tabClean = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoCleanPage))
-            clean.addGestureRecognizer(tabClean)
-            clean.isUserInteractionEnabled = true
+            createButton(imageBtn: clean, view: view, viewController: viewController, imageName: "clean.png", selector: #selector(ProfileViewController.gotoCleanPage))
         case 2:
             let room = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            room.image = UIImage(named: "room.png")
-            view.addSubview(room)
-            let tabRoom = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoRoomPage))
-            room.addGestureRecognizer(tabRoom)
-            room.isUserInteractionEnabled = true
+            createButton(imageBtn: room, view: view, viewController: viewController, imageName: "room.png", selector: #selector(ProfileViewController.gotoRoomPage))
         case 3:
             let food = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            food.image = UIImage(named: "food.png")
-            view.addSubview(food)
-            let tabFood = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoFoodPage))
-            food.addGestureRecognizer(tabFood)
-            food.isUserInteractionEnabled = true
+            createButton(imageBtn: food, view: view, viewController: viewController, imageName: "food.png", selector: #selector(ProfileViewController.gotoFoodPage))
         case 4:
             let checkout = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            checkout.image = UIImage(named: "checkout.png")
-            view.addSubview(checkout)
-            let tabCheckout = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoCheckoutPage))
-            checkout.addGestureRecognizer(tabCheckout)
-            checkout.isUserInteractionEnabled = true
+            createButton(imageBtn: checkout, view: view, viewController: viewController, imageName: "checkout.png", selector: #selector(ProfileViewController.gotoCheckoutPage))
             
             let traffic = UIImageView(frame: CGRect(x: checkout.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            traffic.image = UIImage(named: "traffic.png")
-            view.addSubview(traffic)
-            let tabTraffic = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoTrafficPage))
-            traffic.addGestureRecognizer(tabTraffic)
-            traffic.isUserInteractionEnabled = true
+            createButton(imageBtn: traffic, view: view, viewController: viewController, imageName: "traffic.png", selector: #selector(ProfileViewController.gotoTrafficPage))
         case 5:
             let roomViews = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            roomViews.image = UIImage(named: "room.png")
-            view.addSubview(roomViews)
-            let tabRoom = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoRoomPage))
-            roomViews.addGestureRecognizer(tabRoom)
-            roomViews.isUserInteractionEnabled = true
+            createButton(imageBtn: roomViews, view: view, viewController: viewController, imageName: "room.png", selector: #selector(ProfileViewController.gotoRoomPage))
             
             let events = UIImageView(frame: CGRect(x: roomViews.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            events.image = UIImage(named: "event.png")
-            view.addSubview(events)
-            let tabEvent = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoEventPage))
-            events.addGestureRecognizer(tabEvent)
-            events.isUserInteractionEnabled = true
+            createButton(imageBtn: events, view: view, viewController: viewController, imageName: "event.png", selector: #selector(ProfileViewController.gotoEventPage))
             
             let employees = UIImageView(frame: CGRect(x: events.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            employees.image = UIImage(named: "employees.png")
-            view.addSubview(employees)
-            let tabEmployee = UITapGestureRecognizer(target: viewController, action: #selector(ProfileViewController.gotoEmployeePage))
-            employees.addGestureRecognizer(tabEmployee)
-            employees.isUserInteractionEnabled = true
+            createButton(imageBtn: employees, view: view, viewController: viewController, imageName: "employees.png", selector: #selector(ProfileViewController.gotoEmployeePage))
         default:
             break
         }
+    }
+    
+    func createButton(imageBtn: UIImageView, view: UIView, viewController: UIViewController, imageName: String, selector: Selector) {
+        imageBtn.image = UIImage(named: imageName)
+        view.addSubview(imageBtn)
+        let gestureRecognizer = UITapGestureRecognizer(target: viewController, action: selector)
+        imageBtn.addGestureRecognizer(gestureRecognizer)
+        imageBtn.isUserInteractionEnabled = true
     }
     
     init(departmentId: Int) {
