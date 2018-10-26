@@ -34,6 +34,8 @@ class ProfileViewController: UIViewController {
             phoneLabel.text = "\(employee!.phone)"
         }
         
+        print(department)
+        print(reservation)
         if department?.departmentId == 4 {
             let payment: OrderPaymentDeatil = OrderPaymentDeatil()
             let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]

@@ -59,10 +59,14 @@ class CheckoutTableViewController: UITableViewController {
             let updateReservationStatusParameters: [String : String] = ["action":"updateRoomReservationStatusById", "roomGroup":roomGroup, "roomReservationStatus":String(newReservationStatus)]
             let payment = OrderPaymentDeatil()
             payment.updateRoomReservationStatusById(updateReservationStatusParameters).done { (result) in
+                print(result)
+                
                 if result == "0" {
                     print("修改失敗")
                 } else {
                     print("修改成功")
+                    let newRoomList: [OrderRoomDetail] = self.changeStatus(self.reservation![indexPath.row].checkout, status: result)
+                    self.reservation![indexPath.row].checkout = newRoomList
                     self.tableView.reloadData()
                 }
             }
@@ -70,7 +74,20 @@ class CheckoutTableViewController: UITableViewController {
         alertController.addAction(UIAlertAction(title: "取消", style: .destructive))
         present(alertController, animated: true)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        ((self.parent as! UINavigationController).viewControllers.first as! ProfileViewController).reservation = self.reservation!
+        
+    }
 
+    func changeStatus(_ checkouts: [OrderRoomDetail], status: String) -> [OrderRoomDetail] {
+        var finalRoomDetailList: [OrderRoomDetail] = checkouts
+        for (index, _) in finalRoomDetailList.enumerated() {
+            finalRoomDetailList[index].roomReservationStatus = status
+        }
+        return finalRoomDetailList
+    }
 }
 
 

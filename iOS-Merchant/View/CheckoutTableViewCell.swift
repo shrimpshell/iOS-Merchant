@@ -60,7 +60,6 @@ class CheckoutTableViewCell: UITableViewCell {
             }
             // 即時服務
             for instants in ((reservation?.instant)!) {
-                print(instants.instantPrice != nil && instants.quantity != nil && instants.instantTypeName != nil)
                 if instants.instantPrice != nil && instants.quantity != nil && instants.instantTypeName != nil {
                     instantInfo += "\(String(describing: instants.instantTypeName!)) x \(String(describing: instants.quantity!)) "
                     price += Int(instants.instantPrice!)! * Int(instants.quantity!)!
