@@ -22,21 +22,31 @@ class CheckoutTableViewCell: UITableViewCell {
             // 編號
             reservationLabel.text = reservation?.id
             reservationLabel.backgroundColor = .yellow
+            
+            statusLabel.textColor = .black
+            dateLabel.textColor = .black
+            roomListLabel.textColor = .black
+            instantLabel.textColor = .black
+            priceLabel.textColor = .black
             // 付款狀態
-            switch reservation?.checkout[0].roomReservationStatus {
+            switch reservation!.checkout[0].roomReservationStatus {
             case "3":
                 statusLabel.text = "已付款"
-                statusLabel.backgroundColor = .gray
+                contentBackground.backgroundColor = .gray
             case "2":
                 statusLabel.text = "待付款"
-                statusLabel.backgroundColor = .green
+                contentBackground.backgroundColor = .green
             case "1":
                 statusLabel.text = "未付款"
-                statusLabel.backgroundColor = .yellow
+                contentBackground.backgroundColor = .yellow
             default:
                 statusLabel.text = "已訂房"
                 statusLabel.textColor = .white
-                statusLabel.backgroundColor = .red
+                dateLabel.textColor = .white
+                roomListLabel.textColor = .white
+                instantLabel.textColor = .white
+                priceLabel.textColor = .white
+                contentBackground.backgroundColor = .red
             }
             // 日期
             dateLabel.text = "\(reservation!.checkout[0].checkInDate.prefix(10)) - \(reservation!.checkout[0].checkOuntDate.prefix(10))"
@@ -44,31 +54,35 @@ class CheckoutTableViewCell: UITableViewCell {
             var price = 0
             var roomInfo: String = ""
             var instantInfo: String = ""
-            for checkouts in (reservation?.checkout)! {
-                price += checkouts.price * checkouts.roomQuantity
-                roomInfo += "\(checkouts.roomTypeName) x \(checkouts.roomQuantity) \n"
+            for checkouts in ((reservation?.checkout)!) {
+                price += Int(checkouts.price)! * Int(checkouts.roomQuantity)!
+                roomInfo += "\(checkouts.RoomTypeName) x \(checkouts.roomQuantity) \n"
             }
             // 即時服務
-            for instants in (reservation?.instant)! {
-                instantInfo += "\(instants.name) x \(instants.quantity)"
-                price += instants.price * instants.quantity
+            for instants in ((reservation?.instant)!) {
+                print(instants.instantPrice != nil && instants.quantity != nil && instants.instantTypeName != nil)
+                if instants.instantPrice != nil && instants.quantity != nil && instants.instantTypeName != nil {
+                    instantInfo += "\(String(describing: instants.instantTypeName!)) x \(String(describing: instants.quantity!)) "
+                    price += Int(instants.instantPrice!)! * Int(instants.quantity!)!
+                }
             }
             roomListLabel.text = roomInfo
             instantLabel.text = instantInfo
+            instantLabel.sizeToFit()
             priceLabel.text = "$\(price)"
             
             // 綁定Action 付款
-//            statusLabel.isUserInteractionEnabled = true
-//            let changePaymentStatus = UITapGestureRecognizer(target: self, action: #selector(changeStatus))
-//            statusLabel.addGestureRecognizer(changePaymentStatus)
+            statusLabel.isUserInteractionEnabled = true
+            let changePaymentStatus = UITapGestureRecognizer(target: self, action: #selector(changeStatus))
+            statusLabel.addGestureRecognizer(changePaymentStatus)
 
         }
     }
     
-//    @objc
-//    func changeStatus() {
-//        print("\(self.reservationLabel.text!), \(String(describing: self.statusLabel.text!))")
-//    }
+    @objc
+    func changeStatus() {
+        print("\(self.reservationLabel.text!), \(String(describing: self.statusLabel.text!))")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
