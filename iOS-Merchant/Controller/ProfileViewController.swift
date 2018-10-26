@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import PromiseKit
 
 class ProfileViewController: UIViewController {
     var department: CDepartment?
     var employee: Employee?
+    var rooms = [OrderRoomDetail]()
+    var instants = [OrderInstantDetail]()
+    var reservation = [Reservation]()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -21,7 +25,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(department!.departmentId)
         if department != nil {
             department!.showButtons(view: view, stackView: tagStackView, viewController: self)
         }
@@ -29,7 +32,53 @@ class ProfileViewController: UIViewController {
             nameLabel.text = "\(employee!.name)"
             emailLabel.text = "\(employee!.email)"
             phoneLabel.text = "\(employee!.phone)"
+        }
+        
+        if department?.departmentId == 4 {
+            let payment: OrderPaymentDeatil = OrderPaymentDeatil()
+            let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
+            let instantParams: [String: String] = ["action" : "viewInstantPayDetailByEmployee"]
             
+            payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
+                self.rooms = ords
+                return payment.viewInstantPayDetailByEmployee(instantParams)
+                }.done { (oids) in
+                    self.instants = oids
+                    self.refactorData()
+                }.catch { (error) in
+                    assertionFailure("CheckoutTableViewController Error: \(error)")
+            }
+        }
+    }
+    
+    // MARK: - custome functions
+    func refactorData() {
+        // 重構結構
+        for checkout in rooms {
+            reservation.append(Reservation(id: checkout.roomGroup, checkout: [], instant: []))
+        }
+        reservation = reservation.removeDeuplicates()
+        for (index, _) in reservation.enumerated() {
+            for checkout in rooms {
+                if checkout.roomGroup == reservation[index].id {
+                    reservation[index].checkout.append(checkout)
+                }
+            }
+            for instant in instants {
+                if instant.roomGroup == reservation[index].id {
+                    reservation[index].instant.append(instant)
+                }
+            }
+        }
+        reservation = reservation.sorted(by: {(first,next) in
+            return Int(first.checkout[0].roomReservationStatus)! < Int(next.checkout[0].roomReservationStatus)!
+        })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
+            let checkoutTableView = segue.destination as? CheckoutTableViewController
+            checkoutTableView?.reservation = self.reservation
         }
     }
     
@@ -79,4 +128,17 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+extension Array where Element: Equatable {
+    func removeDeuplicates() -> [Element] {
+        var result = [Element]()
+        
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+        return result
+    }
 }

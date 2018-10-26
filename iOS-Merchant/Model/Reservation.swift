@@ -14,6 +14,6 @@ struct Reservation: Equatable {
     }
     
     var id: String
-    var checkout: [Checkout]
-    var instant: [Instant]
+    var checkout: [OrderRoomDetail]
+    var instant: [OrderInstantDetail]
 }

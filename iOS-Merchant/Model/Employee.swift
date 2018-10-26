@@ -14,11 +14,11 @@ struct Employee: Codable {
 }
 
 struct EmployeeAuth: Codable {
-    let SERVER_URL: String = "http://192.168.50.46:8080/ShellService"
-    let servlet: String
+    let SERVER_URL: String = Common.SERVER_URL
+    let SERVLET: String = "/EmployeeServlet"
     
     func isValidUser(_ params: [String: String]) -> Promise<String> {
-        let completeURL = SERVER_URL + servlet
+        let completeURL = SERVER_URL + SERVLET
         let url = URL.init(string: completeURL)
         var request = URLRequest(url: url!)
         var isValidAccount = "false"
@@ -38,12 +38,12 @@ struct EmployeeAuth: Codable {
                 let validResult = String(data: data, encoding: .utf8)
                 isValidAccount = String(describing: validResult!)
                 return result.resolve(isValidAccount, nil)
-                }.resume()
+            }.resume()
         }
     }
     
     func isCorrectUser(_ params: [String: String]) -> Promise<String> {
-        let completeURL = SERVER_URL + servlet
+        let completeURL = SERVER_URL + SERVLET
         let url = URL.init(string: completeURL)
         var request = URLRequest(url: url!)
         var idEmployee = "0"
@@ -63,12 +63,12 @@ struct EmployeeAuth: Codable {
                 let id = String(data: data, encoding: .utf8)
                 idEmployee = String(describing: id!)
                 return result.resolve(idEmployee, nil)
-                }.resume()
+            }.resume()
         }
     }
     
     func getEmployeeInfo(_ params: [String: String]) -> Promise<Employee?> {
-        let completeURL = SERVER_URL + servlet
+        let completeURL = SERVER_URL + SERVLET
         let url = URL.init(string: completeURL)
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
@@ -88,7 +88,7 @@ struct EmployeeAuth: Codable {
                 let decoder = JSONDecoder()
                 receivedInfo = try? decoder.decode(Employee.self, from: data)
                 return result.resolve(receivedInfo, nil)
-                }.resume()
+            }.resume()
         }
     }
 }

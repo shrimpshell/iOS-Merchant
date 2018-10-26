@@ -8,6 +8,7 @@ target 'iOS-Merchant' do
   use_frameworks!
 
   # Pods for iOS-Merchant
-  pod "PromiseKit"
+  pod 'PromiseKit'
+  pod 'Alamofire'
 
 end
