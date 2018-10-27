@@ -137,6 +137,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailLabel" destination="YpA-Rk-pJ7" id="TcN-qN-kal"/>
+                        <outlet property="employeeImageView" destination="tUV-wK-afR" id="LfE-8P-8HX"/>
                         <outlet property="nameLabel" destination="4na-lI-wOg" id="2rm-vA-XdS"/>
                         <outlet property="phoneLabel" destination="4uq-MN-RYS" id="Onl-wa-tMV"/>
                         <outlet property="tagStackView" destination="pO4-16-fZz" id="FFI-vD-mvj"/>

@@ -21,21 +21,27 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var tagStackView: UIStackView!
+    @IBOutlet weak var employeeImageView: UIImageView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
         if department != nil {
             department!.showButtons(view: view, stackView: tagStackView, viewController: self)
         }
         if employee != nil {
-            nameLabel.text = "\(employee!.name)"
-            emailLabel.text = "\(employee!.email)"
-            phoneLabel.text = "\(employee!.phone)"
+            self.nameLabel.text = "\(self.employee!.name)"
+            self.emailLabel.text = "\(self.employee!.email)"
+            self.phoneLabel.text = "\(self.employee!.phone)"
+            
+            
+            
         }
         
-        print(department)
-        print(reservation)
         if department?.departmentId == 4 {
             let payment: OrderPaymentDeatil = OrderPaymentDeatil()
             let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
@@ -44,11 +50,20 @@ class ProfileViewController: UIViewController {
             payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
                 self.rooms = ords
                 return payment.viewInstantPayDetailByEmployee(instantParams)
-                }.done { (oids) in
-                    self.instants = oids
-                    self.refactorData()
-                }.catch { (error) in
-                    assertionFailure("CheckoutTableViewController Error: \(error)")
+            }.then { (oids) -> Promise<Data?> in
+                self.instants = oids
+                self.refactorData()
+                let employeeAuth: EmployeeAuth = EmployeeAuth()
+                let imageParams: [String : Any] = ["action":"getImage", "IdEmployee":self.employee!.id]
+                return employeeAuth.getEmployeeImage(imageParams)
+            }.done { (data) in
+                if (data?.count)! > 0 {
+                    DispatchQueue.main.async() {
+                        self.employeeImageView.image = UIImage(data: data!)
+                    }
+                }
+            }.catch { (error) in
+                assertionFailure("CheckoutTableViewController Error: \(error)")
             }
         }
     }
@@ -89,7 +104,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func gotoTrafficPage() {
-        print("go to checkout page")
+        print("go to traffic page")
     }
     
     @objc func gotoEventPage() {
