@@ -17,13 +17,6 @@ class CheckoutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
     }
 
     // MARK: - Table view data source
@@ -50,29 +43,33 @@ class CheckoutTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "編號：\(reservation![indexPath.row].checkout[0].roomGroup)", message: "確定付款？", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "確定", style: .default) {
-            (action) in
-            let roomReservationStatus = self.reservation![indexPath.row].checkout[0].roomReservationStatus
-            let newReservationStatus = Int(roomReservationStatus)! + 1
-            let roomGroup = self.reservation![indexPath.row].checkout[0].roomGroup
-            let updateReservationStatusParameters: [String : String] = ["action":"updateRoomReservationStatusById", "roomGroup":roomGroup, "roomReservationStatus":String(newReservationStatus)]
-            let payment = OrderPaymentDeatil()
-            payment.updateRoomReservationStatusById(updateReservationStatusParameters).done { (result) in
-                print(result)
+        let roomReservationStatus = self.reservation![indexPath.row].checkout[0].roomReservationStatus
+        if Int(roomReservationStatus)! < 3 {
+            let alertController = UIAlertController(title: "編號：\(reservation![indexPath.row].checkout[0].roomGroup)", message: "確定付款？", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "確定", style: .default) {
+                (action) in
                 
-                if result == "0" {
-                    print("修改失敗")
-                } else {
-                    print("修改成功")
-                    let newRoomList: [OrderRoomDetail] = self.changeStatus(self.reservation![indexPath.row].checkout, status: result)
-                    self.reservation![indexPath.row].checkout = newRoomList
-                    self.tableView.reloadData()
+                let newReservationStatus = (Int(roomReservationStatus)! + 1) < 4 ? (Int(roomReservationStatus)! + 1) : Int(roomReservationStatus)!
+                let roomGroup = self.reservation![indexPath.row].checkout[0].roomGroup
+                let updateReservationStatusParameters: [String : String] = ["action":"updateRoomReservationStatusById", "roomGroup":roomGroup, "roomReservationStatus":String(newReservationStatus)]
+                let payment = OrderPaymentDeatil()
+                payment.updateRoomReservationStatusById(updateReservationStatusParameters).done { (result) in
+                    if result == "0" {
+                        print("修改失敗")
+                    } else {
+                        print("修改成功")
+                        let status = Int(self.reservation![indexPath.row].checkout[0].roomReservationStatus)! + 1
+                        let newRoomList: [OrderRoomDetail] = self.changeStatus(self.reservation![indexPath.row].checkout, status: String(status))
+                        self.reservation![indexPath.row].checkout = newRoomList
+                        let tableCell: CheckoutTableViewCell = tableView.cellForRow(at: indexPath) as! CheckoutTableViewCell
+                        tableCell.reservation = self.reservation![indexPath.row]
+                        self.tableView.reloadData()
+                    }
                 }
-            }
-        })
-        alertController.addAction(UIAlertAction(title: "取消", style: .destructive))
-        present(alertController, animated: true)
+            })
+            alertController.addAction(UIAlertAction(title: "取消", style: .destructive))
+            present(alertController, animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
