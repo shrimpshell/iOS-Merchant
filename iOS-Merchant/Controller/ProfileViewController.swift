@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var employeeImageView: UIImageView!
     
     
-    
+    // MARL: - override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,39 +37,20 @@ class ProfileViewController: UIViewController {
             self.nameLabel.text = "\(self.employee!.name)"
             self.emailLabel.text = "\(self.employee!.email)"
             self.phoneLabel.text = "\(self.employee!.phone)"
-            
-            
-            
         }
         
-        if department?.departmentId == 4 {
-            let payment: OrderPaymentDeatil = OrderPaymentDeatil()
-            let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
-            let instantParams: [String: String] = ["action" : "viewInstantPayDetailByEmployee"]
-            
-            payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
-                self.rooms = ords
-                return payment.viewInstantPayDetailByEmployee(instantParams)
-            }.then { (oids) -> Promise<Data?> in
-                self.instants = oids
-                self.refactorData()
-                let employeeAuth: EmployeeAuth = EmployeeAuth()
-                let imageParams: [String : Any] = ["action":"getImage", "IdEmployee":self.employee!.id]
-                return employeeAuth.getEmployeeImage(imageParams)
-            }.done { (data) in
-                if (data?.count)! > 0 {
-                    DispatchQueue.main.async() {
-                        self.employeeImageView.image = UIImage(data: data!)
-                    }
-                }
-            }.catch { (error) in
-                assertionFailure("CheckoutTableViewController Error: \(error)")
-            }
+        showDepartmentButtons()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
+            let checkoutTableView = segue.destination as? CheckoutTableViewController
+            checkoutTableView?.reservation = self.reservation
         }
     }
     
     // MARK: - custome functions
-    func refactorData() {
+    private func refactorData() {
         // 重構結構
         for checkout in rooms {
             reservation.append(Reservation(id: checkout.roomGroup, checkout: [], instant: []))
@@ -92,13 +73,47 @@ class ProfileViewController: UIViewController {
         })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
-            let checkoutTableView = segue.destination as? CheckoutTableViewController
-            checkoutTableView?.reservation = self.reservation
+    private func showDepartmentButtons() {
+        switch department?.departmentId {
+        case 5:
+            break
+        case 4:
+            let payment: OrderPaymentDeatil = OrderPaymentDeatil()
+            let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
+            let instantParams: [String: String] = ["action" : "viewInstantPayDetailByEmployee"]
+            
+            payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
+                self.rooms = ords
+                return payment.viewInstantPayDetailByEmployee(instantParams)
+            }.then { (oids) -> Promise<Data?> in
+                self.instants = oids
+                self.refactorData()
+                let employeeAuth: EmployeeAuth = EmployeeAuth()
+                let imageParams: [String : Any] = ["action":"getImage", "IdEmployee":self.employee!.id]
+                return employeeAuth.getEmployeeImage(imageParams)
+            }.done { (data) in
+                if (data?.count)! > 0 {
+                    DispatchQueue.main.async() {
+                        self.employeeImageView.image = UIImage(data: data!)
+                    }
+                }
+            }.catch { (error) in
+                assertionFailure("CheckoutTableViewController Error: \(error)")
+            }
+            break
+        case 3:
+            break
+        case 2:
+            break
+        case 1:
+            break
+        default:
+            print("No department found")
         }
     }
     
+    
+    // MARL: - @objc page direction
     @objc func gotoCheckoutPage() {
         performSegue(withIdentifier: "toCheckoutView", sender: nil)
     }
@@ -134,16 +149,6 @@ class ProfileViewController: UIViewController {
     @objc func gotoRoomViewPage() {
         print("go to room view page")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
