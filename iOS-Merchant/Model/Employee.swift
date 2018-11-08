@@ -31,9 +31,6 @@ struct EmployeeAuth: Codable {
                 guard let data = data, error == nil else {
                     return result.reject(error!)
                 }
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for
-                    return result.reject("Status: \(httpStatus.statusCode)" as! Error)
-                }
                 
                 let validResult = String(data: data, encoding: .utf8)
                 isValidAccount = String(describing: validResult!)
