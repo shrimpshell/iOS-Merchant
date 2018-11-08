@@ -34,29 +34,23 @@ class ViewController: UIViewController {
         }
         // 判斷員工帳號是否有效
         
-        let employeeExist = ["action": "userExist", "email": email] as [String : String]
         let employeeValid = ["action": "employeeValid", "email": email, "password": password] as [String : String]
         
-        employeeTask.isValidUser(employeeExist).then { isValid -> Promise<String> in
-            guard isValid == "true" else {
-                let alertController = UIAlertController(title: "帳號不存在", message:
-                    "此員工帳號不存在", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-                return employeeTask.isCorrectUser(["action": "employeeValid", "email": "", "password": ""])
-            }
-            return employeeTask.isCorrectUser(employeeValid)
-        }.then { (employeeId) -> Promise<Employee?> in
+        employeeTask.isCorrectUser(employeeValid).then { (employeeId) -> Promise<Employee?> in
             let employeeProfile = ["action": "findById", "idEmployee": employeeId] as [String : String]
             guard employeeId.count > 0 || employeeId != "0" || (Int(employeeId) != nil)  else {
-                let alertController = UIAlertController(title: "帳號資料錯誤", message:
-                    "帳號或密碼不正確", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
-                self.present(alertController, animated: true, completion: nil)
                 return employeeTask.getEmployeeInfo(["action": "findById", "idEmployee": ""])
             }
             return employeeTask.getEmployeeInfo(employeeProfile)
         }.done { (employee) in
+            if employee == nil {
+//                assertionFailure("employee information is nil")
+                let alertController = UIAlertController(title: "帳號資料錯誤", message:
+                    "帳號或密碼不正確", preferredStyle: UIAlertController.Style.alert)
+                alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
             self.employee = employee
             self.departmentId = employee!.departmentId
             email = ""
@@ -65,7 +59,11 @@ class ViewController: UIViewController {
             self.passwordTF.text = ""
             self.performSegue(withIdentifier: "loginSuccessful", sender: nil)
         }.catch { (error) in
-            assertionFailure("Login Error: \(error)")
+            let alertController = UIAlertController(title: "錯誤", message:
+                (error as! String), preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
         }
     }
     
