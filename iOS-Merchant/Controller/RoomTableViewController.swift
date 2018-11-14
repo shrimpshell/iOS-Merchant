@@ -11,17 +11,17 @@ import UIKit
 class RoomTableViewController: UITableViewController {
     
     var rooms:[Room] = [
-        Room(RoomTypeName: "海景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$4100", image: "1.jpg"),
+        Room(RoomTypeName: "海景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$4100", image: "r1.jpg"),
         
-        Room(RoomTypeName: "山景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$3800", image: "3.jpg"),
+        Room(RoomTypeName: "山景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$3800", image: "r3.jpg"),
         
-        Room(RoomTypeName: "海景標準四人房", RoomSize: "45平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5300", image: "2.jpeg"),
+        Room(RoomTypeName: "海景標準四人房", RoomSize: "45平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5300", image: "r2.jpeg"),
         
-        Room(RoomTypeName: "山景標準四人房", RoomSize: "45平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "2間", Price: "$4900", image: "4.jpg"),
+        Room(RoomTypeName: "山景標準四人房", RoomSize: "45平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "2間", Price: "$4900", image: "r4.jpg"),
         
-        Room(RoomTypeName: "海景精緻雙人房", RoomSize: "42平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "3間", Price: "$5800", image: "5.jpg"),
+        Room(RoomTypeName: "海景精緻雙人房", RoomSize: "42平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "3間", Price: "$5800", image: "r5.jpg"),
         
-        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "6.jpg")
+        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "r6.jpg")
     ]
 
     override func viewDidLoad() {

@@ -124,6 +124,10 @@ class ProfileViewController: UIViewController {
     
     @objc func gotoEventPage() {
         print("go to event page")
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "EventView"){
+//            present(controller, animated: true, completion: nil)
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @objc func gotoFoodPage() {
@@ -144,6 +148,9 @@ class ProfileViewController: UIViewController {
     
     @objc func gotoRoomPage() {
         print("go to room page")
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "RoomView"){
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @objc func gotoRoomViewPage() {
