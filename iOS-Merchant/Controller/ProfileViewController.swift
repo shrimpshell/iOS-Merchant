@@ -184,7 +184,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             let parameters = ["action":"updateImage", "idEmployee":"\(employee.id)", "imageBase64":imageDataString]
             employeeAuth.updateEmployeeImage(parameters as [String : Any]).done { data in
                 if data != "0" {
-                    self.employeeImageView.contentMode = .scaleAspectFit
                     self.employeeImageView.image = pickedImage
                 }
             }
