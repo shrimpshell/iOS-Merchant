@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:iOS-Merchant/Base.lproj/RatingPage.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:iOS-Merchant.xcodeproj">
    </FileRef>
    <FileRef

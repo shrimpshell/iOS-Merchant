@@ -118,11 +118,11 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
+				D12463C121644D9500190E42 /* Main.storyboard */,
 				D186E3CE216B24EC004F864E /* Image */,
 				D1DE94F9217ABB5B00B6CE63 /* Model */,
 				D1103EA7216C762400B57132 /* View */,
 				D18836E62167D2920051A041 /* Controller */,
-				D12463C121644D9500190E42 /* Main.storyboard */,
 				D12463BD21644D9500190E42 /* AppDelegate.swift */,
 				D12463C421644D9600190E42 /* Assets.xcassets */,
 				D12463C621644D9600190E42 /* LaunchScreen.storyboard */,
