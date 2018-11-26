@@ -46,6 +46,21 @@ class ProfileViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        switch department?.departmentId {
+        case 1:
+            getServiceItem(idInstantService: 1)
+        case 2:
+            getServiceItem(idInstantService: 2)
+        case 3:
+            getServiceItem(idInstantService: 3)
+        default:
+            break
+        }
+       
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
@@ -55,20 +70,17 @@ class ProfileViewController: UIViewController {
             return
         }
         if department?.departmentId == 3 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? UINavigationController
-            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
-            nivagationVC.departmentId = departmentId
-            nivagationVC.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
         } else if department?.departmentId == 2 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? UINavigationController
-            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
-            nivagationVC.departmentId = departmentId
-            nivagationVC.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
         } else if department?.departmentId == 1 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? UINavigationController
-            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
-            nivagationVC.departmentId = departmentId
-            nivagationVC.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
         }
     }
     
@@ -125,13 +137,10 @@ class ProfileViewController: UIViewController {
             }
             break
         case 3:
-            getServiceItem(idInstantService: 3)
             break
         case 2:
-            getServiceItem(idInstantService: 2)
             break
         case 1:
-            getServiceItem(idInstantService: 1)
             break
         default:
             print("No department found")
@@ -152,7 +161,7 @@ class ProfileViewController: UIViewController {
     @objc func gotoEventPage() {
         print("go to event page")
         if let controller = storyboard?.instantiateViewController(withIdentifier: "EventView"){
-//            present(controller, animated: true, completion: nil)
+            present(controller, animated: true, completion: nil)
             navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -215,9 +224,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
-        getServiceItem(idInstantService: 3)
-    }
+//    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
+//        switch department?.departmentId {
+//        case 1:
+//            getServiceItem(idInstantService: 1)
+//        case 2:
+//            getServiceItem(idInstantService: 2)
+//        case 3:
+//            getServiceItem(idInstantService: 3)
+//        default:
+//            break
+//        }
+//    }
     
 
 }

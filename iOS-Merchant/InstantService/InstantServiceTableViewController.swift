@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//var instantStatus = [Instant]()
+
 
 class InstantServiceTableViewController: UITableViewController {
 
@@ -26,11 +26,14 @@ class InstantServiceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        print("Debug 5 >>>\(instantStatus)")
         
         for status in instantStatus {
             switch status.status {
@@ -47,6 +50,7 @@ class InstantServiceTableViewController: UITableViewController {
                 break
             }
         }
+        print("Debug 3 >>> \(arrayInstantStatusForInfo)")
         
         for type in instantStatus {
             switch type.idInstantType {
@@ -86,11 +90,16 @@ class InstantServiceTableViewController: UITableViewController {
         for idInstantDetail in instantStatus {
             self.arrayInstantIdInstantDetail.append(String(idInstantDetail.idInstantDetail))
         }
+        
+        tableView.reloadData()
+        
+       
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        getServiceItem(idInstantService: departmentId!)
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
+    
 
     // MARK: - Table view data source
 
@@ -182,6 +191,8 @@ class InstantServiceTableViewController: UITableViewController {
             print("getEmployeeStatus 2 resultObject: \(resultObject)")
             
             self.instantStatus = resultObject
+            
+            
         }
     }
 
