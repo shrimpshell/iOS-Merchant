@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
     let download = Common.shared
-    var instantStatus: [Instant]?
+    var instantStatus = [Instant]()
     
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController {
         }
         
         showDepartmentButtons()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,21 +51,24 @@ class ProfileViewController: UIViewController {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
             checkoutTableView?.reservation = self.reservation
         }
-        guard let departmentId = self.department?.departmentId, let instantStatus = self.instantStatus else {
+        guard let departmentId = self.department?.departmentId else{
             return
         }
         if department?.departmentId == 3 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? InstantServiceTableViewController
-            instantServiceVC?.departmentId = departmentId
-            instantServiceVC?.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? UINavigationController
+            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
+            nivagationVC.departmentId = departmentId
+            nivagationVC.instantStatus = instantStatus
         } else if department?.departmentId == 2 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? InstantServiceTableViewController
-            instantServiceVC?.departmentId = departmentId
-            instantServiceVC?.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? UINavigationController
+            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
+            nivagationVC.departmentId = departmentId
+            nivagationVC.instantStatus = instantStatus
         } else if department?.departmentId == 1 && segue.identifier == "toInstantServiceView" {
-            let instantServiceVC = segue.destination as? InstantServiceTableViewController
-            instantServiceVC?.departmentId = departmentId
-            instantServiceVC?.instantStatus = instantStatus
+            let instantServiceVC = segue.destination as? UINavigationController
+            let nivagationVC = instantServiceVC?.topViewController as! InstantServiceTableViewController
+            nivagationVC.departmentId = departmentId
+            nivagationVC.instantStatus = instantStatus
         }
     }
     
@@ -183,6 +187,7 @@ class ProfileViewController: UIViewController {
         print("go to room view page")
     }
     
+    
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
@@ -204,11 +209,16 @@ class ProfileViewController: UIViewController {
                 print("updateUserServiceStatus Fail to decode jsonData.")
                 return
             }
-            print("resultObject: \(resultObject)")
+            print("getEmployeeStatus resultObject: \(resultObject)")
             
             self.instantStatus = resultObject
         }
     }
+    
+    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
+        getServiceItem(idInstantService: 3)
+    }
+    
 
 }
 

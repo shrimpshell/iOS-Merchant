@@ -12,14 +12,14 @@ class ServiceDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var statusImage: UIImageView!
     
-    @IBOutlet weak var statusLabelForInstantService: UILabel!
+    @IBOutlet weak var statusLabelForRoomNumber: UILabel!
     
     @IBOutlet weak var statusLabelForServiceType: UILabel!
     
     @IBOutlet weak var statusLabelForCount: UILabel!
     
     @IBOutlet weak var statusView: UIView!
-  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +27,7 @@ class ServiceDetailTableViewCell: UITableViewCell {
         statusView.layer.cornerRadius = 20
         statusView.layer.shadowOffset = CGSize(width: 5, height: 5)
         statusView.layer.shadowOpacity = 5
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

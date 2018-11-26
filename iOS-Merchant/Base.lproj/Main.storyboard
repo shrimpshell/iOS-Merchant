@@ -142,7 +142,7 @@
                         <outlet property="phoneLabel" destination="4uq-MN-RYS" id="Onl-wa-tMV"/>
                         <outlet property="tagStackView" destination="pO4-16-fZz" id="FFI-vD-mvj"/>
                         <segue destination="Q72-oj-CdU" kind="show" identifier="toCheckoutView" id="R5d-XP-DxP"/>
-                        <segue destination="0TX-hy-eAv" kind="show" identifier="toInstantServiceView" id="Qho-Jt-tf6"/>
+                        <segue destination="MsG-vl-j2o" kind="show" identifier="toInstantServiceView" id="Qho-Jt-tf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJg-1L-Dje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,7 +229,7 @@
                                 <connections>
                                     <outlet property="statusImage" destination="rli-ar-dBh" id="IOp-AU-UgL"/>
                                     <outlet property="statusLabelForCount" destination="CTi-5U-SCt" id="GVy-t8-ctn"/>
-                                    <outlet property="statusLabelForInstantService" destination="ISV-4E-vqk" id="Y8v-ve-A8a"/>
+                                    <outlet property="statusLabelForRoomNumber" destination="ISV-4E-vqk" id="pZN-wV-KMi"/>
                                     <outlet property="statusLabelForServiceType" destination="08H-Dd-7GR" id="gZK-we-RZh"/>
                                     <outlet property="statusView" destination="OvJ-UX-6S7" id="KnJ-nk-FGW"/>
                                 </connections>
@@ -240,10 +240,18 @@
                             <outlet property="delegate" destination="0TX-hy-eAv" id="9yt-eS-KSk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="tnj-3C-Ka5">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="U00-k7-zkz">
+                            <connections>
+                                <segue destination="BFO-gd-N73" kind="unwind" unwindAction="unwindToProfileVC:" id="021-mD-YMV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVp-gc-sX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BFO-gd-N73" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3080.8000000000002" y="22.938530734632685"/>
+            <point key="canvasLocation" x="4020" y="22.938530734632685"/>
         </scene>
         <!--Checkout Table View Controller-->
         <scene sceneID="L86-LC-WVO">
@@ -851,6 +859,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBs-MT-Cj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5228" y="1762"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="msl-oH-NY4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MsG-vl-j2o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xpB-6q-5ML">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0TX-hy-eAv" kind="relationship" relationship="rootViewController" id="UaC-su-1hV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt9-WM-Tdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3080.8000000000002" y="22.938530734632685"/>
         </scene>
     </scenes>
     <resources>

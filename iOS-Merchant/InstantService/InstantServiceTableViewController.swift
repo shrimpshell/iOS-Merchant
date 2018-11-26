@@ -7,17 +7,21 @@
 //
 
 import UIKit
+//var instantStatus = [Instant]()
 
 class InstantServiceTableViewController: UITableViewController {
 
     var departmentId: Int?
     let download = Common.shared
     
-    var arrayInstantStatus: [String] = []
+    var arrayInstantStatusForImage: [String] = []
+    var arrayInstantStatusForInfo: [String] = []
     var arrayInstantRoomNumber: [String] = []
     var arrayInstantType:[String] = []
     var arrayInstantQuantity:[String] = []
+    var arrayInstantIdInstantDetail:[String] = []
     var instantStatus = [Instant]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +35,16 @@ class InstantServiceTableViewController: UITableViewController {
         for status in instantStatus {
             switch status.status {
             case 1:
-                self.arrayInstantStatus.append("icon_unfinish")
+                self.arrayInstantStatusForImage.append("icon_unfinish")
+                self.arrayInstantStatusForInfo.append("1")
             case 2:
-                self.arrayInstantStatus.append("icon_playing")
+                self.arrayInstantStatusForImage.append("icon_playing")
+                self.arrayInstantStatusForInfo.append("2")
+            case 3:
+                self.arrayInstantStatusForImage.append("icon_finish")
+                self.arrayInstantStatusForInfo.append("3")
             default:
-                self.arrayInstantStatus.append("icon_finish")
+                break
             }
         }
         
@@ -73,6 +82,14 @@ class InstantServiceTableViewController: UITableViewController {
         for roomnumber in instantStatus {
             self.arrayInstantRoomNumber.append(roomnumber.roomNumber)
         }
+        
+        for idInstantDetail in instantStatus {
+            self.arrayInstantIdInstantDetail.append(String(idInstantDetail.idInstantDetail))
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        getServiceItem(idInstantService: departmentId!)
     }
 
     // MARK: - Table view data source
@@ -93,10 +110,11 @@ class InstantServiceTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.statusImage.image = UIImage(named: arrayInstantStatus[indexPath.row])
-        cell.statusLabelForInstantService.text = arrayInstantRoomNumber[indexPath.row]
+        cell.statusImage.image = UIImage(named: arrayInstantStatusForImage[indexPath.row])
+        cell.statusLabelForRoomNumber.text = arrayInstantRoomNumber[indexPath.row]
         cell.statusLabelForServiceType.text = arrayInstantType[indexPath.row]
         cell.statusLabelForCount.text = arrayInstantQuantity[indexPath.row]
+       
 
         return cell
     }
@@ -106,6 +124,67 @@ class InstantServiceTableViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ServiceDetailTableViewCell
+        
+        guard let idInstantDetail = Int(arrayInstantIdInstantDetail[indexPath.row].description) else {
+            return
+        }
+        
+        guard let status = Int(arrayInstantStatusForInfo[indexPath.row].description) else {
+            return
+        }
+    
+        switch status {
+        case 1:
+            download.updateStatus(idInstantDetail: idInstantDetail, status: 2) { (result, error) in
+                if let error = error {
+                    print("UpdateStatus text error: \(error)")
+                    return
+                }
+                print("UpdateStatus text OK: \(result!)")
+            }
+        case 2:
+            download.updateStatus(idInstantDetail: idInstantDetail, status: 3) { (result, error) in
+                if let error = error {
+                    print("UpdateStatus text error: \(error)")
+                    return
+                }
+                print("UpdateStatus text OK: \(result!)")
+            }
+        default:
+            break
+        }
+        
+    }
+    
+    func getServiceItem(idInstantService: Int) {
+        download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
+            if let error = error {
+                print("updateUserServiceStatus 2 error: \(error)")
+                return
+            }
+            guard let result = result else {
+                print("result is nil.")
+                return
+            }
+            print("updateUserServiceStatus 2 Info is OK.")
+            // Decode as [Instant]. 解碼下載下來的 json
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
+                print("updateUserServiceStatus 2 Fail to generate jsonData.")
+                return
+            }
+            let decoder = JSONDecoder()
+            guard let resultObject = try? decoder.decode([Instant].self, from: jsonData) else {
+                print("updateUserServiceStatus 2 Fail to decode jsonData.")
+                return
+            }
+            print("getEmployeeStatus 2 resultObject: \(resultObject)")
+            
+            self.instantStatus = resultObject
+        }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -151,5 +230,7 @@ class InstantServiceTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }
