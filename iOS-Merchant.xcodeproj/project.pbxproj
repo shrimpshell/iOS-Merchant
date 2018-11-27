@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7265248C21A4535B0042A680 /* InstantServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265248B21A4535B0042A680 /* InstantServiceTableViewController.swift */; };
 		7265248E21A453810042A680 /* ServiceDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265248D21A453810042A680 /* ServiceDetailTableViewCell.swift */; };
+		726A26F721AD2318005B4BD2 /* Josh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726A26F621AD2318005B4BD2 /* Josh.storyboard */; };
 		72854A4C21A586B000EE7C3A /* Instant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72854A4B21A586B000EE7C3A /* Instant.swift */; };
 		72854A4E21A58F5100EE7C3A /* icon_unfinish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4D21A58F5100EE7C3A /* icon_unfinish.png */; };
 		72854A5021A58F5B00EE7C3A /* icon_finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4F21A58F5B00EE7C3A /* icon_finish.png */; };
@@ -51,6 +52,7 @@
 		70BE82EFBAEBE35A5B0D8DED /* Pods-iOS-Merchant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.debug.xcconfig"; sourceTree = "<group>"; };
 		7265248B21A4535B0042A680 /* InstantServiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantServiceTableViewController.swift; sourceTree = "<group>"; };
 		7265248D21A453810042A680 /* ServiceDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailTableViewCell.swift; sourceTree = "<group>"; };
+		726A26F621AD2318005B4BD2 /* Josh.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Josh.storyboard; sourceTree = "<group>"; };
 		72854A4B21A586B000EE7C3A /* Instant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instant.swift; sourceTree = "<group>"; };
 		72854A4D21A58F5100EE7C3A /* icon_unfinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_unfinish.png; sourceTree = "<group>"; };
 		72854A4F21A58F5B00EE7C3A /* icon_finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_finish.png; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
+				726A26F621AD2318005B4BD2 /* Josh.storyboard */,
 				D186E3CE216B24EC004F864E /* Image */,
 				7265248A21A453120042A680 /* InstantService */,
 				D1DE94F9217ABB5B00B6CE63 /* Model */,
@@ -291,6 +294,7 @@
 				D186E3CB216B24D7004F864E /* room.png in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
+				726A26F721AD2318005B4BD2 /* Josh.storyboard in Resources */,
 				D12463C321644D9500190E42 /* Main.storyboard in Resources */,
 				D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */,
 				D1DE9503217AC10000B6CE63 /* event.png in Resources */,
