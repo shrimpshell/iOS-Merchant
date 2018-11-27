@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7893F52F21A7A75900E08C2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7893F52D21A7A75900E08C2B /* Main.storyboard */; };
+		7893F53321A7A88800E08C2B /* RatingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7893F53221A7A88800E08C2B /* RatingPage.storyboard */; };
 		AC6E9A0D66E7D6C1A52D9D21 /* Pods_iOS_Merchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */; };
 		D10E45B6216BB63700D0848F /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = D10E45B5216BB63700D0848F /* traffic.png */; };
 		D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */; };
 		D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */; };
 		D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12463BD21644D9500190E42 /* AppDelegate.swift */; };
 		D12463C021644D9500190E42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12463BF21644D9500190E42 /* ViewController.swift */; };
-		D12463C321644D9500190E42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12463C121644D9500190E42 /* Main.storyboard */; };
 		D12463C521644D9600190E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12463C421644D9600190E42 /* Assets.xcassets */; };
 		D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12463C621644D9600190E42 /* LaunchScreen.storyboard */; };
 		D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16029D6216F4E83006D1BC1 /* Reservation.swift */; };
@@ -34,6 +35,8 @@
 /* Begin PBXFileReference section */
 		638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Merchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE82EFBAEBE35A5B0D8DED /* Pods-iOS-Merchant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.debug.xcconfig"; sourceTree = "<group>"; };
+		7893F52E21A7A75900E08C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7893F53221A7A88800E08C2B /* RatingPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RatingPage.storyboard; sourceTree = "<group>"; };
 		7A9BF6BC93FCE2AEEEC01533 /* Pods-iOS-Merchant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.release.xcconfig"; sourceTree = "<group>"; };
 		D10E45B5216BB63700D0848F /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
 		D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +44,6 @@
 		D12463BA21644D9500190E42 /* iOS-Merchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Merchant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12463BD21644D9500190E42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D12463BF21644D9500190E42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D12463C221644D9500190E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D12463C421644D9600190E42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12463C721644D9600190E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12463C921644D9600190E42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,7 +120,8 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
-				D12463C121644D9500190E42 /* Main.storyboard */,
+				7893F53221A7A88800E08C2B /* RatingPage.storyboard */,
+				7893F52D21A7A75900E08C2B /* Main.storyboard */,
 				D186E3CE216B24EC004F864E /* Image */,
 				D1DE94F9217ABB5B00B6CE63 /* Model */,
 				D1103EA7216C762400B57132 /* View */,
@@ -230,12 +233,13 @@
 			files = (
 				D1DE94FF217ABEEF00B6CE63 /* clean.png in Resources */,
 				D1DE9501217AC00200B6CE63 /* food.png in Resources */,
+				7893F53321A7A88800E08C2B /* RatingPage.storyboard in Resources */,
 				D186E3CD216B24E4004F864E /* checkout.png in Resources */,
 				D1DE94FD217ABEB000B6CE63 /* edit.png in Resources */,
 				D186E3CB216B24D7004F864E /* room.png in Resources */,
+				7893F52F21A7A75900E08C2B /* Main.storyboard in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
-				D12463C321644D9500190E42 /* Main.storyboard in Resources */,
 				D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */,
 				D1DE9503217AC10000B6CE63 /* event.png in Resources */,
 				D10E45B6216BB63700D0848F /* traffic.png in Resources */,
@@ -306,10 +310,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D12463C121644D9500190E42 /* Main.storyboard */ = {
+		7893F52D21A7A75900E08C2B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D12463C221644D9500190E42 /* Base */,
+				7893F52E21A7A75900E08C2B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -163,6 +163,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         print("go to room view page")
     }
     
+    @objc func gotoRatingPage() {
+        
+    }
+    
     @objc func selectPhotoFromGallery() {
         self.present(targetImage, animated: true, completion: nil)
     }

@@ -142,6 +142,7 @@
                         <outlet property="phoneLabel" destination="4uq-MN-RYS" id="Onl-wa-tMV"/>
                         <outlet property="tagStackView" destination="pO4-16-fZz" id="FFI-vD-mvj"/>
                         <segue destination="Q72-oj-CdU" kind="show" identifier="toCheckoutView" id="R5d-XP-DxP"/>
+                        <segue destination="QZ3-zE-qfF" kind="show" id="3xl-ZJ-hnd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJg-1L-Dje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,6 +257,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTM-LB-hco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1176.8" y="22.938530734632685"/>
+        </scene>
+        <!--firstRatingPage-->
+        <scene sceneID="4gR-g8-PiX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RatingPage" referencedIdentifier="firstRatingPage" id="QZ3-zE-qfF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DYa-Do-6Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2932" y="22"/>
         </scene>
     </scenes>
     <resources>
