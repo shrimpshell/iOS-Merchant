@@ -16,7 +16,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var rooms = [OrderRoomDetail]()
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
+<<<<<<< HEAD
     var targetImage: UIImagePickerController!
+=======
+    let download = Common.shared
+    var instantStatus = [Instant]()
+    
+>>>>>>> Josh01
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -53,12 +59,44 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
         
         showDepartmentButtons()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        switch department?.departmentId {
+        case 1:
+            getServiceItem(idInstantService: 1)
+        case 2:
+            getServiceItem(idInstantService: 2)
+        case 3:
+            getServiceItem(idInstantService: 3)
+        default:
+            break
+        }
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
             checkoutTableView?.reservation = self.reservation
+        }
+        guard let departmentId = self.department?.departmentId else{
+            return
+        }
+        if department?.departmentId == 3 && segue.identifier == "toInstantServiceView" {
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
+        } else if department?.departmentId == 2 && segue.identifier == "toInstantServiceView" {
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
+        } else if department?.departmentId == 1 && segue.identifier == "toInstantServiceView" {
+            let instantServiceVC = segue.destination as? InstantServiceTableViewController
+            instantServiceVC?.departmentId = departmentId
+            instantServiceVC?.instantStatus = instantStatus
         }
     }
     
@@ -94,7 +132,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             let payment: OrderPaymentDeatil = OrderPaymentDeatil()
             let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
             let instantParams: [String: String] = ["action" : "viewInstantPayDetailByEmployee"]
-            
+
             payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
                 self.rooms = ords
                 return payment.viewInstantPayDetailByEmployee(instantParams)
@@ -133,18 +171,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @objc func gotoTrafficPage() {
         print("go to traffic page")
+        performSegue(withIdentifier: "toInstantServiceView", sender: nil)
     }
     
     @objc func gotoEventPage() {
         print("go to event page")
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "EventView"){
+            present(controller, animated: true, completion: nil)
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @objc func gotoFoodPage() {
         print("go to food page")
+        performSegue(withIdentifier: "toInstantServiceView", sender: nil)
     }
     
     @objc func gotoCleanPage() {
         print("go to clean page")
+        performSegue(withIdentifier: "toInstantServiceView", sender: nil)
     }
     
     @objc func gotoEditPage() {
@@ -157,12 +202,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @objc func gotoRoomPage() {
         print("go to room page")
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "RoomView"){
+            navigationController?.pushViewController(controller, animated: true)
+        }
+        
     }
     
     @objc func gotoRoomViewPage() {
         print("go to room view page")
     }
     
+<<<<<<< HEAD
     @objc func gotoRatingPage() {
         
     }
@@ -182,6 +232,49 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 assertionFailure("image is not ready")
                 return
             }
+=======
+    
+    func getServiceItem(idInstantService: Int) {
+        download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
+            if let error = error {
+                print("updateUserServiceStatus error: \(error)")
+                return
+            }
+            guard let result = result else {
+                print("result is nil.")
+                return
+            }
+            print("updateUserServiceStatus Info is OK.")
+            // Decode as [Instant]. 解碼下載下來的 json
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
+                print("updateUserServiceStatus Fail to generate jsonData.")
+                return
+            }
+            let decoder = JSONDecoder()
+            guard let resultObject = try? decoder.decode([Instant].self, from: jsonData) else {
+                print("updateUserServiceStatus Fail to decode jsonData.")
+                return
+            }
+            print("getEmployeeStatus resultObject: \(resultObject)")
+            
+            self.instantStatus = resultObject
+        }
+    }
+    
+//    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
+//        switch department?.departmentId {
+//        case 1:
+//            getServiceItem(idInstantService: 1)
+//        case 2:
+//            getServiceItem(idInstantService: 2)
+//        case 3:
+//            getServiceItem(idInstantService: 3)
+//        default:
+//            break
+//        }
+//    }
+    
+>>>>>>> Josh01
 
             let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
             let employeeAuth = EmployeeAuth()

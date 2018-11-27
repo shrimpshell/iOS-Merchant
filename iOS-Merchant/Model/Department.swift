@@ -27,6 +27,9 @@ class CDepartment: PDepartment {
         case 2:
             let room = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             createButton(imageBtn: room, view: view, viewController: viewController, imageName: "room.png", selector: #selector(ProfileViewController.gotoRoomPage))
+            
+            let traffic = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
+            createButton(imageBtn: traffic, view: view, viewController: viewController, imageName: "traffic.png", selector: #selector(ProfileViewController.gotoTrafficPage))
         case 3:
             let food = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             createButton(imageBtn: food, view: view, viewController: viewController, imageName: "food.png", selector: #selector(ProfileViewController.gotoFoodPage))
@@ -34,8 +37,8 @@ class CDepartment: PDepartment {
             let checkout = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             createButton(imageBtn: checkout, view: view, viewController: viewController, imageName: "checkout.png", selector: #selector(ProfileViewController.gotoCheckoutPage))
             
-            let traffic = UIImageView(frame: CGRect(x: checkout.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
-            createButton(imageBtn: traffic, view: view, viewController: viewController, imageName: "traffic.png", selector: #selector(ProfileViewController.gotoTrafficPage))
+            let room = UIImageView(frame: CGRect(x: checkout.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
+            createButton(imageBtn: room, view: view, viewController: viewController, imageName: "room.png", selector: #selector(ProfileViewController.gotoRoomPage))
         case 5:
             let roomViews = UIImageView(frame: CGRect(x: edit.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             createButton(imageBtn: roomViews, view: view, viewController: viewController, imageName: "room.png", selector: #selector(ProfileViewController.gotoRoomPage))
