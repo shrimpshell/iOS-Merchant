@@ -25,8 +25,8 @@ let ID_CUSTOMER_KEY = "idCustomer"
 typealias DoneHandler = (_ result: Any?, _ error: Error?) -> Void
 
 struct Common {
-    //static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
-    static let SERVER_URL: String = "http://192.168.1.102:8080/ShellService"
+    static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
+    //static let SERVER_URL: String = "http://192.168.1.102:8080/ShellService"
     
     
     let INSTANT_SERVLET = SERVER_URL + "/InstantServlet"
