@@ -6,7 +6,7 @@
 //  Copyright © 2018 Lucy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 //class Room: Codable {
@@ -71,7 +71,8 @@ struct Room: Codable {//建立struct Room格式化資料使用,須參考JSON結�
     var childQuantity: Int
     var roomQuantity: Int
     var price: Int
-//    var roomPic: String = "picture"
+//    var roomPic: UIImage
+    
     
 //    enum CodingKeys: String, CodingKey {
 //        case idRoomType = "IdRoomType"

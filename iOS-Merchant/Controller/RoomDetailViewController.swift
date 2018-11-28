@@ -56,7 +56,19 @@ class RoomDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
 //        roomImageView.image = UIImage(named: room.roomPic)
 //        title = room.name
-        // Do any additional setup after loading the view.
+       
+        roomImageView.image = UIImage(named: "picture")
+        
+        defer {
+            let imageUrl = Common.SERVER_URL + "/RoomTypeServlet?action=getImage&imageId=\(room.id)"
+            
+            let url = URL(string: imageUrl)
+            
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.roomImageView.image = UIImage(data: data!)
+            }
+        }
     }
     
    
