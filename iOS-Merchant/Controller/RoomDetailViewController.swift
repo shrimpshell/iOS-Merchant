@@ -25,25 +25,25 @@ class RoomDetailViewController: UIViewController, UITableViewDataSource, UITable
         switch indexPath.row {
         case 0:
             cell.nameLabel.text = "房間名稱"
-            cell.typeLabel.text = room.RoomTypeName
+            cell.typeLabel.text = room.name
         case 1:
             cell.nameLabel.text = "房間大小"
-            cell.typeLabel.text = room.RoomSize
+            cell.typeLabel.text = room.roomSize
         case 2:
             cell.nameLabel.text = "床型"
-            cell.typeLabel.text = room.Bed
+            cell.typeLabel.text = room.bed
         case 3:
             cell.nameLabel.text = "大人人數"
-            cell.typeLabel.text = room.AdultQuantity
+            cell.typeLabel.text = String(room.adultQuantity)
         case 4:
             cell.nameLabel.text = "小孩人數"
-            cell.typeLabel.text = room.ChildQuantity
+            cell.typeLabel.text = String(room.childQuantity)
         case 5:
             cell.nameLabel.text = "庫存數"
-            cell.typeLabel.text = room.RoomQuantity
+            cell.typeLabel.text = String(room.roomQuantity)
         default:
             cell.nameLabel.text = "價錢"
-            cell.typeLabel.text = room.Price
+            cell.typeLabel.text = String(room.price)
         }
         return cell
     }
@@ -54,7 +54,7 @@ class RoomDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        roomImageView.image = UIImage(named: room.image)
+//        roomImageView.image = UIImage(named: room.roomPic)
 //        title = room.name
         // Do any additional setup after loading the view.
     }

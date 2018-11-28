@@ -462,28 +462,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="房間名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBd-QJ-XFp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="房間名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBd-QJ-XFp">
                                                     <rect key="frame" x="16" y="11" width="70" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-XK-gLk">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="名稱" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tZa-XK-gLk">
                                                     <rect key="frame" x="16" y="31" width="339" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="RBd-QJ-XFp" secondAttribute="bottom" constant="29" id="8eb-oR-iKL"/>
-                                                <constraint firstItem="RBd-QJ-XFp" firstAttribute="leading" secondItem="tZa-XK-gLk" secondAttribute="leading" id="CjA-uT-bde"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="tZa-XK-gLk" secondAttribute="trailing" constant="4" id="hhk-mR-ZON"/>
-                                                <constraint firstItem="tZa-XK-gLk" firstAttribute="top" secondItem="aNX-LC-xhW" secondAttribute="topMargin" constant="20" id="hrG-Nu-xnc"/>
-                                                <constraint firstItem="tZa-XK-gLk" firstAttribute="bottom" secondItem="aNX-LC-xhW" secondAttribute="bottomMargin" id="jeZ-Gm-bDn"/>
-                                                <constraint firstItem="RBd-QJ-XFp" firstAttribute="top" secondItem="aNX-LC-xhW" secondAttribute="topMargin" id="pUg-hS-rYS"/>
-                                                <constraint firstItem="RBd-QJ-XFp" firstAttribute="leading" secondItem="aNX-LC-xhW" secondAttribute="leadingMargin" constant="10" id="t0t-IW-6Q1"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="6C6-hH-HGL">

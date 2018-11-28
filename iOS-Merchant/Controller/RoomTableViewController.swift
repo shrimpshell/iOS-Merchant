@@ -10,24 +10,51 @@ import UIKit
 
 class RoomTableViewController: UITableViewController {
     
-    var rooms:[Room] = [
-        Room(RoomTypeName: "海景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$4100", image: "r1.jpg"),
-        
-        Room(RoomTypeName: "山景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$3800", image: "r3.jpg"),
-        
-        Room(RoomTypeName: "海景標準四人房", RoomSize: "45平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5300", image: "r2.jpeg"),
-        
-        Room(RoomTypeName: "山景標準四人房", RoomSize: "45平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "2間", Price: "$4900", image: "r4.jpg"),
-        
-        Room(RoomTypeName: "海景精緻雙人房", RoomSize: "42平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "3間", Price: "$5800", image: "r5.jpg"),
-        
-        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "r6.jpg")
-    ]
+    var objects = [Room]()
+    
+//    var rooms:[Room] = [
+//        Room(RoomTypeName: "海景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$4100", image: "r1.jpg"),
+//
+//        Room(RoomTypeName: "山景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$3800", image: "r3.jpg"),
+//
+//        Room(RoomTypeName: "海景標準四人房", RoomSize: "45平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5300", image: "r2.jpeg"),
+//
+//        Room(RoomTypeName: "山景標準四人房", RoomSize: "45平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "2間", Price: "$4900", image: "r4.jpg"),
+//
+//        Room(RoomTypeName: "海景精緻雙人房", RoomSize: "42平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "3間", Price: "$5800", image: "r5.jpg"),
+//
+//        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "r6.jpg")
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // 移除返回按鈕的標題
 //       navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        
+        
+        let urlString = Common.SERVER_URL + "/RoomTypeServlet?action=getAll"
+        
+        guard let url = URL(string: urlString) else {
+            assertionFailure("Invalid URL string.")
+            return
+        }
+        
+        RoomDownloaderAndUploader.downloadRoom(url: url) { (rooms, error) in
+            if let error = error {
+                print("Download Room: \(error)")
+                return
+            }
+            guard let items = rooms else {
+                assertionFailure("rooms is nil.")
+                return
+            }
+            
+            print("Items: \(items)")
+            self.objects = items//替換Master的Array
+            
+            self.tableView.reloadData()//刷新tableView
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,17 +72,17 @@ class RoomTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return rooms.count
+        return objects.count
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RoomTableViewCell
         
-        cell.nameLabel?.text = rooms[indexPath.row].RoomTypeName
-        cell.typeLabel?.text = rooms[indexPath.row].RoomSize
-        cell.priceLabel?.text = rooms[indexPath.row].Price
-        cell.roomImage.image = UIImage(named: rooms[indexPath.row].image)
+        cell.nameLabel?.text = objects[indexPath.row].name
+        cell.typeLabel?.text = objects[indexPath.row].roomSize
+        cell.priceLabel?.text = String(objects[indexPath.row].price)
+//        cell.roomImage.image = UIImage(named: objects[indexPath.row].roomPic)
         return cell
     }
     
@@ -72,7 +99,7 @@ class RoomTableViewController: UITableViewController {
     // Override to support editing the table view. Swipe-to-delete-向左滑刪除
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            rooms.remove(at: indexPath.row)
+            objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -99,7 +126,7 @@ class RoomTableViewController: UITableViewController {
         if segue.identifier == "showRoomDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RoomDetailViewController
-                destinationController.room = rooms[indexPath.row]
+                destinationController.room = objects[indexPath.row]
             }
         }
     }
