@@ -26,8 +26,11 @@ typealias DoneHandler = (_ result: Any?, _ error: Error?) -> Void
 
 struct Common {
     static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
-    //static let SERVER_URL: String = "http://192.168.1.102:8080/ShellService"
+    //static let SERVER_URL: String = "http://10.1.1.2:8080/ShellService"
     
+    // Websocket
+    let SOCKET_URL: String = "ws://192.168.50.124:8080/ShellService/WsServer/"
+    //let SOCKET_URL: String = "ws://10.1.1.2:8080/ShellService/WsServer/"
     
     let INSTANT_SERVLET = SERVER_URL + "/InstantServlet"
     let PAYDETAIL_SERVLET = SERVER_URL + "/PayDetailServlet"

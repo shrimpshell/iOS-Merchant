@@ -8,7 +8,10 @@ target 'iOS-Merchant' do
   use_frameworks!
 
   # Pods for iOS-Merchant
+  
   pod 'PromiseKit'
   pod 'Alamofire'
+  pod 'Starscream', '~> 3.0.2'
+
 
 end

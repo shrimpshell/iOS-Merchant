@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import Starscream
+import UserNotifications
 
 
-class InstantServiceTableViewController: UITableViewController {
+
+class InstantServiceTableViewController: UITableViewController, WebSocketDelegate {
 
     var departmentId: Int?
     let download = Common.shared
+    var socket: WebSocket!
+    var employee: String?
+    var count = 0
     
     var arrayInstantStatusForImage: [String] = []
     var arrayInstantStatusForInfo: [String] = []
-    var arrayInstantRoomNumber: [String] = []
+    var arrayInstantRoomNumber: [String?] = []
     var arrayInstantType:[String] = []
     var arrayInstantQuantity:[String] = []
     var arrayInstantIdInstantDetail:[String] = []
@@ -25,15 +31,37 @@ class InstantServiceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let groupId = departmentId?.description else {
+            return
+        }
+       socketConnect(userId: employee!, groupId: groupId)
         
-        print("Debug 5 >>>\(instantStatus)")
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        socketDisConnect()
+    }
+    
+    
+    func setCell() {
+       
+        arrayInstantType.removeAll()
+        arrayInstantQuantity.removeAll()
+        arrayInstantRoomNumber.removeAll()
+        arrayInstantStatusForInfo.removeAll()
+        arrayInstantStatusForImage.removeAll()
+        arrayInstantIdInstantDetail.removeAll()
         
         for status in instantStatus {
             switch status.status {
@@ -50,7 +78,6 @@ class InstantServiceTableViewController: UITableViewController {
                 break
             }
         }
-        print("Debug 3 >>> \(arrayInstantStatusForInfo)")
         
         for type in instantStatus {
             switch type.idInstantType {
@@ -91,12 +118,9 @@ class InstantServiceTableViewController: UITableViewController {
             self.arrayInstantIdInstantDetail.append(String(idInstantDetail.idInstantDetail))
         }
         
-        tableView.reloadData()
+        print("Debug >>> setCell")
         
-       
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
         
     }
     
@@ -126,6 +150,8 @@ class InstantServiceTableViewController: UITableViewController {
        
 
         return cell
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -143,7 +169,16 @@ class InstantServiceTableViewController: UITableViewController {
         guard let status = Int(arrayInstantStatusForInfo[indexPath.row].description) else {
             return
         }
-    
+        
+        guard let roomNumber = arrayInstantRoomNumber[indexPath.row] else {
+            return
+        }
+        
+        let socketMessage = Socket(senderId: employee!, receiverId: roomNumber , senderGroupId: (departmentId?.description)!, receiverGroupId: "0", serviceId: departmentId!, instantNumber: idInstantDetail)
+        let socketData = try! JSONEncoder().encode(socketMessage)
+        let socketString = String(data: socketData, encoding: .utf8)!
+        
+        
         switch status {
         case 1:
             download.updateStatus(idInstantDetail: idInstantDetail, status: 2) { (result, error) in
@@ -151,51 +186,102 @@ class InstantServiceTableViewController: UITableViewController {
                     print("UpdateStatus text error: \(error)")
                     return
                 }
-                print("UpdateStatus text OK: \(result!)")
+                self.getServiceItem(idInstantService: self.departmentId!)
+                print("UpdateStatus case 1 to 2 text OK: \(result!)")
             }
+            
+            socketSendMessage(socketMessage: socketString)
+            
         case 2:
             download.updateStatus(idInstantDetail: idInstantDetail, status: 3) { (result, error) in
                 if let error = error {
                     print("UpdateStatus text error: \(error)")
                     return
                 }
-                print("UpdateStatus text OK: \(result!)")
+                self.getServiceItem(idInstantService: self.departmentId!)
+                print("UpdateStatus case 2 to 3 OK: \(result!)")
             }
+            
+            socketSendMessage(socketMessage: socketString)
+            
         default:
             break
         }
         
     }
     
+
+    
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
-                print("updateUserServiceStatus 2 error: \(error)")
+                print("getEmployeeStatus 2 error: \(error)")
                 return
             }
             guard let result = result else {
                 print("result is nil.")
                 return
             }
-            print("updateUserServiceStatus 2 Info is OK.")
+            print("getEmployeeStatus 2 Info is OK.")
             // Decode as [Instant]. 解碼下載下來的 json
             guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
-                print("updateUserServiceStatus 2 Fail to generate jsonData.")
+                print("getEmployeeStatus 2 Fail to generate jsonData.")
                 return
             }
             let decoder = JSONDecoder()
             guard let resultObject = try? decoder.decode([Instant].self, from: jsonData) else {
-                print("updateUserServiceStatus 2 Fail to decode jsonData.")
+                print("getEmployeeStatus 2 Fail to decode jsonData.")
                 return
             }
             print("getEmployeeStatus 2 resultObject: \(resultObject)")
             
             self.instantStatus = resultObject
-            
-            
+            self.setCell()
         }
     }
-
+    
+    func showLocalNotification(_ message: Socket) {
+        getServiceItem(idInstantService: departmentId!)
+        print("Debug >>> showLocalNotification")
+        
+    }
+    
+    
+    func socketConnect(userId: String, groupId: String) {
+        socket = WebSocket(url: URL(string: download.SOCKET_URL + userId + "/" + groupId)!)
+        socket.delegate = self
+        socket.connect()
+    }
+    
+    func socketDisConnect() {
+        socket.disconnect()
+    }
+    
+    func socketSendMessage(socketMessage: String) {
+        socket.write(string: socketMessage)
+        
+    }
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("websocket is disconnected: \(error?.localizedDescription)")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("got some text: \(text)")
+        let decoder = JSONDecoder()
+        let jsonData = text.data(using: String.Encoding.utf8, allowLossyConversion: true)!
+        let message = try! decoder.decode(Socket.self, from: jsonData)
+        
+        showLocalNotification(message)
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("got some data: \(data.count)")
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -243,5 +329,5 @@ class InstantServiceTableViewController: UITableViewController {
     */
     
     
-
 }
+

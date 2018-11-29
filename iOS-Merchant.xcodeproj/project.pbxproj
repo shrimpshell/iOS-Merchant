@@ -14,6 +14,7 @@
 		72854A4E21A58F5100EE7C3A /* icon_unfinish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4D21A58F5100EE7C3A /* icon_unfinish.png */; };
 		72854A5021A58F5B00EE7C3A /* icon_finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4F21A58F5B00EE7C3A /* icon_finish.png */; };
 		72854A5221A58F6300EE7C3A /* icon_playing.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A5121A58F6200EE7C3A /* icon_playing.png */; };
+		72C35FB721AE8B34006BD1A7 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C35FB621AE8B34006BD1A7 /* Socket.swift */; };
 		AC6E9A0D66E7D6C1A52D9D21 /* Pods_iOS_Merchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */; };
 		CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */; };
 		CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		72854A4D21A58F5100EE7C3A /* icon_unfinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_unfinish.png; sourceTree = "<group>"; };
 		72854A4F21A58F5B00EE7C3A /* icon_finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_finish.png; sourceTree = "<group>"; };
 		72854A5121A58F6200EE7C3A /* icon_playing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_playing.png; sourceTree = "<group>"; };
+		72C35FB621AE8B34006BD1A7 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		7A9BF6BC93FCE2AEEEC01533 /* Pods-iOS-Merchant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.release.xcconfig"; sourceTree = "<group>"; };
 		CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				CD77EBF8219C7EDD003EE5AE /* Room.swift */,
 				72854A4B21A586B000EE7C3A /* Instant.swift */,
 				CD77EBF6219C781C003EE5AE /* Event.swift */,
+				72C35FB621AE8B34006BD1A7 /* Socket.swift */,
 				D16029D6216F4E83006D1BC1 /* Reservation.swift */,
 				D1DE9504217AC13100B6CE63 /* Department.swift */,
 				D1A9EF6B2180571800E0B9AD /* Employee.swift */,
@@ -235,7 +238,7 @@
 				D12463B621644D9500190E42 /* Sources */,
 				D12463B721644D9500190E42 /* Frameworks */,
 				D12463B821644D9500190E42 /* Resources */,
-				6C3298F74FA1AC3DBFEBCEF6 /* [CP] Embed Pods Frameworks */,
+				DF13511F56B732BEA9A8160E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,26 +308,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6C3298F74FA1AC3DBFEBCEF6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8E5DBFB3D59D1EA39B088B80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +326,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DF13511F56B732BEA9A8160E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -357,6 +362,7 @@
 				CD77EBF9219C7EDD003EE5AE /* Room.swift in Sources */,
 				D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */,
 				CD77EC01219C7F15003EE5AE /* RoomDetailViewController.swift in Sources */,
+				72C35FB721AE8B34006BD1A7 /* Socket.swift in Sources */,
 				D1A9EF6C2180571800E0B9AD /* Employee.swift in Sources */,
 				7265248E21A453810042A680 /* ServiceDetailTableViewCell.swift in Sources */,
 				72854A4C21A586B000EE7C3A /* Instant.swift in Sources */,

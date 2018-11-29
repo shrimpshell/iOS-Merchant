@@ -9,6 +9,7 @@
 import UIKit
 import PromiseKit
 
+
 class ProfileViewController: UIViewController {
     var department: CDepartment?
     var employee: Employee?
@@ -73,14 +74,17 @@ class ProfileViewController: UIViewController {
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         } else if department?.departmentId == 2 && segue.identifier == "toInstantServiceView" {
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         } else if department?.departmentId == 1 && segue.identifier == "toInstantServiceView" {
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         }
     }
     
@@ -224,18 +228,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-//    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
-//        switch department?.departmentId {
-//        case 1:
-//            getServiceItem(idInstantService: 1)
-//        case 2:
-//            getServiceItem(idInstantService: 2)
-//        case 3:
-//            getServiceItem(idInstantService: 3)
-//        default:
-//            break
-//        }
-//    }
     
 
 }

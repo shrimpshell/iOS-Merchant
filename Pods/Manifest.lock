@@ -9,20 +9,24 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
+  - Starscream (3.0.6)
 
 DEPENDENCIES:
   - Alamofire
   - PromiseKit
+  - Starscream (~> 3.0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - PromiseKit
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 9ac8a356f5bde32c329042c1b50f70036713c98d
+PODFILE CHECKSUM: 4329d694b3211fb4285d20a7a99005fbf6e528a2
 
 COCOAPODS: 1.5.2
