@@ -38,6 +38,8 @@
 		D186E3CD216B24E4004F864E /* checkout.png in Resources */ = {isa = PBXBuildFile; fileRef = D186E3CC216B24E4004F864E /* checkout.png */; };
 		D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18836E72167D2BD0051A041 /* ProfileViewController.swift */; };
 		D1A9EF6C2180571800E0B9AD /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A9EF6B2180571800E0B9AD /* Employee.swift */; };
+		D1C682CC21B1242F00937827 /* profileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1C682CB21B1242F00937827 /* profileEdit.storyboard */; };
+		D1C682CE21B1246900937827 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C682CD21B1246900937827 /* ProfileEditViewController.swift */; };
 		D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */ = {isa = PBXBuildFile; fileRef = D1DE94FA217ABEB000B6CE63 /* employees.png */; };
 		D1DE94FD217ABEB000B6CE63 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = D1DE94FB217ABEB000B6CE63 /* edit.png */; };
 		D1DE94FF217ABEEF00B6CE63 /* clean.png in Resources */ = {isa = PBXBuildFile; fileRef = D1DE94FE217ABEEF00B6CE63 /* clean.png */; };
@@ -84,6 +86,8 @@
 		D186E3CC216B24E4004F864E /* checkout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkout.png; sourceTree = "<group>"; };
 		D18836E72167D2BD0051A041 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1A9EF6B2180571800E0B9AD /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		D1C682CB21B1242F00937827 /* profileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = profileEdit.storyboard; sourceTree = "<group>"; };
+		D1C682CD21B1246900937827 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D1DE94FA217ABEB000B6CE63 /* employees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = employees.png; sourceTree = "<group>"; };
 		D1DE94FB217ABEB000B6CE63 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		D1DE94FE217ABEEF00B6CE63 /* clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clean.png; sourceTree = "<group>"; };
@@ -164,13 +168,14 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
-				726A26F621AD2318005B4BD2 /* Josh.storyboard */,
 				D186E3CE216B24EC004F864E /* Image */,
 				7265248A21A453120042A680 /* InstantService */,
 				D1DE94F9217ABB5B00B6CE63 /* Model */,
 				D1103EA7216C762400B57132 /* View */,
 				D18836E62167D2920051A041 /* Controller */,
 				D12463C121644D9500190E42 /* Main.storyboard */,
+				D1C682CB21B1242F00937827 /* profileEdit.storyboard */,
+				726A26F621AD2318005B4BD2 /* Josh.storyboard */,
 				D12463BD21644D9500190E42 /* AppDelegate.swift */,
 				D12463C421644D9600190E42 /* Assets.xcassets */,
 				D12463C621644D9600190E42 /* LaunchScreen.storyboard */,
@@ -207,6 +212,7 @@
 				D12463BF21644D9500190E42 /* ViewController.swift */,
 				D18836E72167D2BD0051A041 /* ProfileViewController.swift */,
 				D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */,
+				D1C682CD21B1246900937827 /* ProfileEditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				D1DE94FF217ABEEF00B6CE63 /* clean.png in Resources */,
 				D1DE9501217AC00200B6CE63 /* food.png in Resources */,
 				D186E3CD216B24E4004F864E /* checkout.png in Resources */,
+				D1C682CC21B1242F00937827 /* profileEdit.storyboard in Resources */,
 				D1DE94FD217ABEB000B6CE63 /* edit.png in Resources */,
 				72854A5221A58F6300EE7C3A /* icon_playing.png in Resources */,
 				72854A5021A58F5B00EE7C3A /* icon_finish.png in Resources */,
@@ -371,6 +378,7 @@
 				CD77EBFC219C7EFD003EE5AE /* RoomTableViewCell.swift in Sources */,
 				D12463C021644D9500190E42 /* ViewController.swift in Sources */,
 				D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */,
+				D1C682CE21B1246900937827 /* ProfileEditViewController.swift in Sources */,
 				D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */,
 				D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */,
 				CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */,
@@ -525,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DW35N2WN73;
+				DEVELOPMENT_TEAM = S7MGGJ4QC3;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,7 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DW35N2WN73;
+				DEVELOPMENT_TEAM = S7MGGJ4QC3;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

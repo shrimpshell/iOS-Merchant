@@ -143,6 +143,7 @@
                         <outlet property="tagStackView" destination="pO4-16-fZz" id="FFI-vD-mvj"/>
                         <segue destination="Q72-oj-CdU" kind="show" identifier="toCheckoutView" id="R5d-XP-DxP"/>
                         <segue destination="foR-My-pAo" kind="show" identifier="toInstantServiceView" id="aHj-cd-hgw"/>
+                        <segue destination="Ame-A1-rDJ" kind="show" identifier="toProfileEdit" id="Tky-pf-q31"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJg-1L-Dje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -764,6 +765,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Goy-Z2-SjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2930" y="23"/>
+        </scene>
+        <!--profileEdit-->
+        <scene sceneID="Lgd-8a-8wF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="profileEdit" id="Ame-A1-rDJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RwQ-Hp-yfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2983" y="377"/>
         </scene>
     </scenes>
     <resources>
