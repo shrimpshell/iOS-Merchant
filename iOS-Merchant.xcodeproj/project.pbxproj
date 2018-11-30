@@ -7,7 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7265248C21A4535B0042A680 /* InstantServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265248B21A4535B0042A680 /* InstantServiceTableViewController.swift */; };
+		7265248E21A453810042A680 /* ServiceDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7265248D21A453810042A680 /* ServiceDetailTableViewCell.swift */; };
+		726A26F721AD2318005B4BD2 /* Josh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 726A26F621AD2318005B4BD2 /* Josh.storyboard */; };
+		72854A4C21A586B000EE7C3A /* Instant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72854A4B21A586B000EE7C3A /* Instant.swift */; };
+		72854A4E21A58F5100EE7C3A /* icon_unfinish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4D21A58F5100EE7C3A /* icon_unfinish.png */; };
+		72854A5021A58F5B00EE7C3A /* icon_finish.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A4F21A58F5B00EE7C3A /* icon_finish.png */; };
+		72854A5221A58F6300EE7C3A /* icon_playing.png in Resources */ = {isa = PBXBuildFile; fileRef = 72854A5121A58F6200EE7C3A /* icon_playing.png */; };
+		72C35FB721AE8B34006BD1A7 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C35FB621AE8B34006BD1A7 /* Socket.swift */; };
 		AC6E9A0D66E7D6C1A52D9D21 /* Pods_iOS_Merchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */; };
+		CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */; };
+		CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */; };
+		CD77EBF7219C781D003EE5AE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF6219C781C003EE5AE /* Event.swift */; };
+		CD77EBF9219C7EDD003EE5AE /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF8219C7EDD003EE5AE /* Room.swift */; };
+		CD77EBFC219C7EFD003EE5AE /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFA219C7EFD003EE5AE /* RoomTableViewCell.swift */; };
+		CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFB219C7EFD003EE5AE /* RoomDetailTableViewCell.swift */; };
+		CD77EC01219C7F15003EE5AE /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */; };
+		CD77EC02219C7F15003EE5AE /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */; };
+		CD77EC03219C7F15003EE5AE /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */; };
 		D10E45B6216BB63700D0848F /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = D10E45B5216BB63700D0848F /* traffic.png */; };
 		D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */; };
 		D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */; };
@@ -34,7 +51,24 @@
 /* Begin PBXFileReference section */
 		638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Merchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE82EFBAEBE35A5B0D8DED /* Pods-iOS-Merchant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.debug.xcconfig"; sourceTree = "<group>"; };
+		7265248B21A4535B0042A680 /* InstantServiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantServiceTableViewController.swift; sourceTree = "<group>"; };
+		7265248D21A453810042A680 /* ServiceDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailTableViewCell.swift; sourceTree = "<group>"; };
+		726A26F621AD2318005B4BD2 /* Josh.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Josh.storyboard; sourceTree = "<group>"; };
+		72854A4B21A586B000EE7C3A /* Instant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instant.swift; sourceTree = "<group>"; };
+		72854A4D21A58F5100EE7C3A /* icon_unfinish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_unfinish.png; sourceTree = "<group>"; };
+		72854A4F21A58F5B00EE7C3A /* icon_finish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_finish.png; sourceTree = "<group>"; };
+		72854A5121A58F6200EE7C3A /* icon_playing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_playing.png; sourceTree = "<group>"; };
+		72C35FB621AE8B34006BD1A7 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		7A9BF6BC93FCE2AEEEC01533 /* Pods-iOS-Merchant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.release.xcconfig"; sourceTree = "<group>"; };
+		CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		CD77EBF6219C781C003EE5AE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		CD77EBF8219C7EDD003EE5AE /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		CD77EBFA219C7EFD003EE5AE /* RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
+		CD77EBFB219C7EFD003EE5AE /* RoomDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
+		CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
+		CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		D10E45B5216BB63700D0848F /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
 		D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewController.swift; sourceTree = "<group>"; };
 		D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTableViewCell.swift; sourceTree = "<group>"; };
@@ -80,6 +114,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7265248A21A453120042A680 /* InstantService */ = {
+			isa = PBXGroup;
+			children = (
+				7265248B21A4535B0042A680 /* InstantServiceTableViewController.swift */,
+				7265248D21A453810042A680 /* ServiceDetailTableViewCell.swift */,
+			);
+			path = InstantService;
+			sourceTree = "<group>";
+		};
 		90205DC18A823712D68CE29A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +135,9 @@
 		D1103EA7216C762400B57132 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD77EBFB219C7EFD003EE5AE /* RoomDetailTableViewCell.swift */,
+				CD77EBFA219C7EFD003EE5AE /* RoomTableViewCell.swift */,
+				CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */,
 				D1103EA5216C761E00B57132 /* CheckoutTableViewCell.swift */,
 			);
 			path = View;
@@ -118,7 +164,9 @@
 		D12463BC21644D9500190E42 /* iOS-Merchant */ = {
 			isa = PBXGroup;
 			children = (
+				726A26F621AD2318005B4BD2 /* Josh.storyboard */,
 				D186E3CE216B24EC004F864E /* Image */,
+				7265248A21A453120042A680 /* InstantService */,
 				D1DE94F9217ABB5B00B6CE63 /* Model */,
 				D1103EA7216C762400B57132 /* View */,
 				D18836E62167D2920051A041 /* Controller */,
@@ -136,6 +184,9 @@
 			children = (
 				D1DE9502217AC10000B6CE63 /* event.png */,
 				D1DE9500217AC00200B6CE63 /* food.png */,
+				72854A4D21A58F5100EE7C3A /* icon_unfinish.png */,
+				72854A4F21A58F5B00EE7C3A /* icon_finish.png */,
+				72854A5121A58F6200EE7C3A /* icon_playing.png */,
 				D1DE94FE217ABEEF00B6CE63 /* clean.png */,
 				D1DE94FB217ABEB000B6CE63 /* edit.png */,
 				D1DE94FA217ABEB000B6CE63 /* employees.png */,
@@ -149,6 +200,10 @@
 		D18836E62167D2920051A041 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */,
+				CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */,
+				CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */,
+				CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */,
 				D12463BF21644D9500190E42 /* ViewController.swift */,
 				D18836E72167D2BD0051A041 /* ProfileViewController.swift */,
 				D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */,
@@ -159,6 +214,10 @@
 		D1DE94F9217ABB5B00B6CE63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD77EBF8219C7EDD003EE5AE /* Room.swift */,
+				72854A4B21A586B000EE7C3A /* Instant.swift */,
+				CD77EBF6219C781C003EE5AE /* Event.swift */,
+				72C35FB621AE8B34006BD1A7 /* Socket.swift */,
 				D16029D6216F4E83006D1BC1 /* Reservation.swift */,
 				D1DE9504217AC13100B6CE63 /* Department.swift */,
 				D1A9EF6B2180571800E0B9AD /* Employee.swift */,
@@ -179,7 +238,7 @@
 				D12463B621644D9500190E42 /* Sources */,
 				D12463B721644D9500190E42 /* Frameworks */,
 				D12463B821644D9500190E42 /* Resources */,
-				6C3298F74FA1AC3DBFEBCEF6 /* [CP] Embed Pods Frameworks */,
+				DF13511F56B732BEA9A8160E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,13 +287,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72854A4E21A58F5100EE7C3A /* icon_unfinish.png in Resources */,
 				D1DE94FF217ABEEF00B6CE63 /* clean.png in Resources */,
 				D1DE9501217AC00200B6CE63 /* food.png in Resources */,
 				D186E3CD216B24E4004F864E /* checkout.png in Resources */,
 				D1DE94FD217ABEB000B6CE63 /* edit.png in Resources */,
+				72854A5221A58F6300EE7C3A /* icon_playing.png in Resources */,
+				72854A5021A58F5B00EE7C3A /* icon_finish.png in Resources */,
 				D186E3CB216B24D7004F864E /* room.png in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
+				726A26F721AD2318005B4BD2 /* Josh.storyboard in Resources */,
 				D12463C321644D9500190E42 /* Main.storyboard in Resources */,
 				D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */,
 				D1DE9503217AC10000B6CE63 /* event.png in Resources */,
@@ -245,26 +308,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6C3298F74FA1AC3DBFEBCEF6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8E5DBFB3D59D1EA39B088B80 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +326,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DF13511F56B732BEA9A8160E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -290,16 +355,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */,
+				CD77EC03219C7F15003EE5AE /* AddRoomTableViewController.swift in Sources */,
+				CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */,
+				7265248C21A4535B0042A680 /* InstantServiceTableViewController.swift in Sources */,
+				CD77EBF9219C7EDD003EE5AE /* Room.swift in Sources */,
 				D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */,
+				CD77EC01219C7F15003EE5AE /* RoomDetailViewController.swift in Sources */,
+				72C35FB721AE8B34006BD1A7 /* Socket.swift in Sources */,
 				D1A9EF6C2180571800E0B9AD /* Employee.swift in Sources */,
+				7265248E21A453810042A680 /* ServiceDetailTableViewCell.swift in Sources */,
+				72854A4C21A586B000EE7C3A /* Instant.swift in Sources */,
+				CD77EC02219C7F15003EE5AE /* RoomTableViewController.swift in Sources */,
 				D1DE9505217AC13100B6CE63 /* Department.swift in Sources */,
+				CD77EBFC219C7EFD003EE5AE /* RoomTableViewCell.swift in Sources */,
 				D12463C021644D9500190E42 /* ViewController.swift in Sources */,
 				D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */,
 				D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */,
 				D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */,
+				CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */,
 				D1F1DDE22181ECD9007BFF1E /* OrderDetail.swift in Sources */,
 				D1F1DDE421822346007BFF1E /* Common.swift in Sources */,
 				D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */,
+				CD77EBF7219C781D003EE5AE /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7MGGJ4QC3;
+				DEVELOPMENT_TEAM = DW35N2WN73;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -466,7 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7MGGJ4QC3;
+				DEVELOPMENT_TEAM = DW35N2WN73;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
