@@ -77,9 +77,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileEdit" {
+            let profileEditView = segue.destination as? ProfileEditViewController
+            profileEditView?.employee = self.employee
+            return
+        }
         if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
             checkoutTableView?.reservation = self.reservation
+            return
         }
         guard let departmentId = self.department?.departmentId else{
             return
@@ -196,6 +202,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @objc func gotoEditPage() {
         print("go to edit page")
+        performSegue(withIdentifier: "toProfileEdit", sender: nil)
     }
     
     @objc func gotoEmployeePage() {
