@@ -27,6 +27,17 @@ class RoomTableViewController: UITableViewController {
     //        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "r6.jpg")
     //    ]
     
+    //增加背景圖
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "employee_home_background")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 移除返回按鈕的標題
