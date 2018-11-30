@@ -11,7 +11,7 @@ import Photos
 import PromiseKit
 
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var department: CDepartment?
     var employee: Employee?
@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController {
     var reservation = [Reservation]()
     let download = Common.shared
     var instantStatus = [Instant]()
+    var targetImage: UIImagePickerController!
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -213,6 +214,48 @@ class ProfileViewController: UIViewController {
         print("go to room view page")
     }
     
+    @objc func gotoRatingPage() {
+        
+    }
+    
+    @objc func selectPhotoFromGallery() {
+        self.present(targetImage, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) { () -> Void in
+            guard let employee = self.employee else {
+                assertionFailure("employee is nil")
+                return
+            }
+            guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+                let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
+                    assertionFailure("image is not ready")
+                    return
+            }
+            
+            let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
+            let employeeAuth = EmployeeAuth()
+            let parameters = ["action":"updateImage", "idEmployee":"\(employee.id)", "imageBase64":imageDataString]
+            employeeAuth.updateEmployeeImage(parameters as [String : Any]).done { data in
+                if data != "0" {
+                    self.employeeImageView.image = pickedImage
+                }
+            }
+        }
+    }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
     
     func getServiceItem(idInstantService: Int) {
@@ -242,17 +285,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-
-            let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
-            let employeeAuth = EmployeeAuth()
-            let parameters = ["action":"updateImage", "idEmployee":"\(employee.id)", "imageBase64":imageDataString]
-            employeeAuth.updateEmployeeImage(parameters as [String : Any]).done { data in
-                if data != "0" {
-                    self.employeeImageView.image = pickedImage
-                }
-            }
-        }
-    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true) {
@@ -298,3 +330,5 @@ extension Array where Element: Equatable {
         return result
     }
 }
+
+
