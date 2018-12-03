@@ -21,20 +21,25 @@ let IDINSTANTDETAIL_KEY = "idInstantDetail"
 let STATUS_KEY = "status"
 let ID_INSTANTSERVICE_KEY = "idInstantService"
 let ID_CUSTOMER_KEY = "idCustomer"
+let RATING_KEY = "rating"
+let IDROOMRESERVATION_KEY = "IdRoomReservation"
 
 typealias DoneHandler = (_ result: Any?, _ error: Error?) -> Void
 
 struct Common {
-    static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
-    //static let SERVER_URL: String = "http://192.168.1.102:8080/ShellService"
+    //static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
+    //static let SERVER_URL: String = "http://192.168.1.15:8080/ShellService"      //home
+    static let SERVER_URL = "http://192.168.50.105:8080/ShellService"   //school
+    
     
     
     let INSTANT_SERVLET = SERVER_URL + "/InstantServlet"
     let PAYDETAIL_SERVLET = SERVER_URL + "/PayDetailServlet"
+    let RATING_SERVLET = SERVER_URL + "/RatingServlet"
     
     static let shared = Common()
     
-    private init(){
+    private init() {
     }
     
     
@@ -52,6 +57,24 @@ struct Common {
         doPost(urlString: INSTANT_SERVLET, parameters: parameters, completion: completion)
     }
     
+    // Ratings
+    func getAllCustomerRatings(key: String, completion: @escaping DoneHandler) {
+        let parameters: [String : Any] = [ACTION: key]
+        
+        doPost(urlString: RATING_SERVLET, parameters: parameters, completion: completion)
+    }
+    
+    func updateRatingReview(rating: Rating, completion: @escaping DoneHandler) {
+        let parameters: [String : Any] = [ACTION: "updateReview", RATING_KEY: rating]
+        
+        doPost(urlString: RATING_SERVLET, parameters: parameters, completion: completion)
+    }
+    
+    func deleteRating(idRoomReservation: Int, completion: @escaping DoneHandler) {
+        let parameters: [String : Any] = [ACTION: "delete", IDROOMRESERVATION_KEY: idRoomReservation]
+        
+        doPost(urlString: RATING_SERVLET, parameters: parameters, completion: completion)
+    }
     
     
     

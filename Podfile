@@ -10,5 +10,5 @@ target 'iOS-Merchant' do
   # Pods for iOS-Merchant
   pod 'PromiseKit'
   pod 'Alamofire'
-
+  pod 'Cosmos'
 end

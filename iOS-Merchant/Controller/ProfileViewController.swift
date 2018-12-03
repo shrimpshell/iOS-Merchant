@@ -16,13 +16,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var rooms = [OrderRoomDetail]()
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
-<<<<<<< HEAD
+
     var targetImage: UIImagePickerController!
-=======
     let download = Common.shared
     var instantStatus = [Instant]()
-    
->>>>>>> Josh01
+
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -200,6 +198,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         print("go to employee page")
     }
     
+    
     @objc func gotoRoomPage() {
         print("go to room page")
         if let controller = storyboard?.instantiateViewController(withIdentifier: "RoomView"){
@@ -212,27 +211,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         print("go to room view page")
     }
     
-<<<<<<< HEAD
+
     @objc func gotoRatingPage() {
-        
+        performSegue(withIdentifier: "toRatingsPage", sender: nil)
     }
     
     @objc func selectPhotoFromGallery() {
         self.present(targetImage, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true) { () -> Void in
-            guard let employee = self.employee else {
-                assertionFailure("employee is nil")
-                return
-            }
-            guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-                let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
-                assertionFailure("image is not ready")
-                return
-            }
-=======
     
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
@@ -261,20 +247,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-//    @IBAction func unwindToProfileVC(_ segue: UIStoryboardSegue) {
-//        switch department?.departmentId {
-//        case 1:
-//            getServiceItem(idInstantService: 1)
-//        case 2:
-//            getServiceItem(idInstantService: 2)
-//        case 3:
-//            getServiceItem(idInstantService: 3)
-//        default:
-//            break
-//        }
-//    }
-    
->>>>>>> Josh01
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) { () -> Void in
+            guard let employee = self.employee else {
+                assertionFailure("employee is nil")
+                return
+            }
+            guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+                let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
+                assertionFailure("image is not ready")
+                return
+            }
 
             let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
             let employeeAuth = EmployeeAuth()
@@ -317,7 +300,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             print("User has denied the permission.")
         }
     }
+    
+    @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
+        
+    }
 }
+
 
 extension Array where Element: Equatable {
     func removeDeuplicates() -> [Element] {
@@ -331,3 +319,5 @@ extension Array where Element: Equatable {
         return result
     }
 }
+
+

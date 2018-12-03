@@ -143,7 +143,7 @@
                         <outlet property="tagStackView" destination="pO4-16-fZz" id="FFI-vD-mvj"/>
                         <segue destination="Q72-oj-CdU" kind="show" identifier="toCheckoutView" id="R5d-XP-DxP"/>
                         <segue destination="0TX-hy-eAv" kind="show" identifier="toInstantServiceView" id="jlT-Li-hah"/>
-                        <segue destination="D0x-9T-hI8" kind="show" identifier="toRatingsPage" id="lli-hM-FLI"/>
+                        <segue destination="MIz-cG-IJE" kind="show" id="r5l-ls-b2a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJg-1L-Dje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -336,6 +336,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj2-3v-ldP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2116" y="820.83958020989508"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Y8E-Pr-JzI">
+            <objects>
+                <tableViewController id="MIz-cG-IJE" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mNc-lp-AUQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WBU-VG-b0M">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WBU-VG-b0M" id="KqI-xu-b6J">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MIz-cG-IJE" id="pci-ik-ch4"/>
+                            <outlet property="delegate" destination="MIz-cG-IJE" id="e9p-kT-zDT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OiD-ab-OhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3039" y="516"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jma-Ge-oiR">
@@ -853,14 +881,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBs-MT-Cj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5228" y="1762"/>
-        </scene>
-        <!--RatingsPage-->
-        <scene sceneID="pbt-Le-F5R">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RatingsPage" id="D0x-9T-hI8" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Psi-4P-Fu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2915" y="298"/>
         </scene>
     </scenes>
     <resources>
