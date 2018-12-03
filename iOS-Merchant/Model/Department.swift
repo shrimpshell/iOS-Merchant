@@ -48,6 +48,9 @@ class CDepartment: PDepartment {
             
             let employees = UIImageView(frame: CGRect(x: events.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
             createButton(imageBtn: employees, view: view, viewController: viewController, imageName: "employees.png", selector: #selector(ProfileViewController.gotoEmployeePage))
+            
+            let allRatings = UIImageView(frame: CGRect(x: events.frame.maxX, y: stackView.frame.maxY + 20, width: 90, height: 90))
+            createButton(imageBtn: allRatings, view: view, viewController: viewController, imageName: "rating.png", selector: #selector(ProfileViewController.gotoRatingPage))
         default:
             break
         }

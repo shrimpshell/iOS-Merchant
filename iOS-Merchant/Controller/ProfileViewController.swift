@@ -18,9 +18,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var rooms = [OrderRoomDetail]()
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
+    var targetImage: UIImagePickerController!
     let download = Common.shared
     var instantStatus = [Instant]()
-    var targetImage: UIImagePickerController!
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -209,6 +209,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         print("go to employee page")
     }
     
+    
     @objc func gotoRoomPage() {
         print("go to room page")
         if let controller = storyboard?.instantiateViewController(withIdentifier: "RoomView"){
@@ -222,7 +223,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @objc func gotoRatingPage() {
-        
+        performSegue(withIdentifier: "toRatingsPage", sender: nil)
     }
     
     @objc func selectPhotoFromGallery() {
@@ -251,20 +252,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
         }
     }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-    
+        
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
@@ -291,7 +279,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             self.instantStatus = resultObject
         }
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true) {
@@ -323,7 +310,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             print("User has denied the permission.")
         }
     }
+    
+        @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
+            
+        }
+    
 }
+    
+
 
 extension Array where Element: Equatable {
     func removeDeuplicates() -> [Element] {
