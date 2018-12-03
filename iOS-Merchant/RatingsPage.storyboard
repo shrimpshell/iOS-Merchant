@@ -72,6 +72,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="oxw-ER-6Of" secondAttribute="trailing" constant="239" id="06q-u1-b6i"/>
                                         <constraint firstItem="Ips-2u-IkY" firstAttribute="top" secondItem="InN-fZ-e3l" secondAttribute="topMargin" constant="26" id="0kn-HR-W3J"/>
                                         <constraint firstItem="zOy-Fu-zqL" firstAttribute="top" secondItem="InN-fZ-e3l" secondAttribute="topMargin" id="6NB-ZK-erU"/>
                                         <constraint firstItem="Ips-2u-IkY" firstAttribute="leading" secondItem="InN-fZ-e3l" secondAttribute="leadingMargin" constant="64" id="DFV-UU-4mk"/>
@@ -166,16 +167,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcm-sf-0G5">
-                                <rect key="frame" x="24" y="174.5" width="327" height="465.5"/>
+                                <rect key="frame" x="24" y="175" width="327" height="465"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PX9-1Z-fDB">
-                                        <rect key="frame" x="16" y="16" width="295" height="433.5"/>
+                                        <rect key="frame" x="16" y="16" width="295" height="433"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuE-RN-s1I">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="217"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="216.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o21-sh-65c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="217"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="216.5"/>
                                                         <color key="backgroundColor" red="0.85097801689999997" green="0.8509646058" blue="0.85098129509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -190,7 +191,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-KS-zeB">
-                                                <rect key="frame" x="0.0" y="217" width="295" height="216.5"/>
+                                                <rect key="frame" x="0.0" y="216.5" width="295" height="216.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服回覆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-Qc-eCK">
                                                         <rect key="frame" x="0.0" y="0.0" width="295" height="20.5"/>
@@ -236,7 +237,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nct-xd-Kzq" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="24" y="129.5" width="170" height="30"/>
+                                <rect key="frame" x="24" y="129.5" width="170" height="30.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="GoldStar"/>
@@ -259,9 +260,11 @@
                             <constraint firstItem="Lcm-sf-0G5" firstAttribute="top" secondItem="Nct-xd-Kzq" secondAttribute="bottom" constant="15" id="4re-q5-Vzs"/>
                             <constraint firstItem="s3L-VF-qzP" firstAttribute="trailing" secondItem="Lcm-sf-0G5" secondAttribute="trailing" constant="24" id="9iA-zn-60s"/>
                             <constraint firstItem="s3L-VF-qzP" firstAttribute="trailing" secondItem="ayr-e3-f33" secondAttribute="trailing" constant="16" id="IWO-Gc-3YJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Nct-xd-Kzq" secondAttribute="trailing" constant="181" id="KLl-o9-Cba"/>
                             <constraint firstItem="qF2-ow-F5d" firstAttribute="top" secondItem="ZGP-4P-mTJ" secondAttribute="bottom" constant="8" id="LUd-mi-T4R"/>
                             <constraint firstItem="Csz-r3-3KE" firstAttribute="top" secondItem="s3L-VF-qzP" secondAttribute="top" constant="13" id="MKI-b8-q5J"/>
                             <constraint firstItem="bRk-8D-mY9" firstAttribute="top" secondItem="s3L-VF-qzP" secondAttribute="top" constant="41" id="RFD-Ny-hh3"/>
+                            <constraint firstAttribute="bottom" secondItem="Nct-xd-Kzq" secondAttribute="bottom" constant="507" id="S6Q-UJ-Mt4"/>
                             <constraint firstItem="s3L-VF-qzP" firstAttribute="trailing" secondItem="Csz-r3-3KE" secondAttribute="trailing" constant="12" id="SMr-UF-Nr2"/>
                             <constraint firstItem="ZGP-4P-mTJ" firstAttribute="top" secondItem="s3L-VF-qzP" secondAttribute="top" constant="13" id="W4d-ij-45L"/>
                             <constraint firstItem="Nct-xd-Kzq" firstAttribute="top" secondItem="qF2-ow-F5d" secondAttribute="bottom" constant="8" id="ZbU-0J-dXj"/>
@@ -300,7 +303,7 @@
         <!--Navigation Controller-->
         <scene sceneID="43Q-yh-CLO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1QC-Pz-Tlx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ratingPage" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1QC-Pz-Tlx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wt1-2c-7ug">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

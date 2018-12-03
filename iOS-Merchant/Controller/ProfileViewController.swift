@@ -10,13 +10,14 @@ import UIKit
 import Photos
 import PromiseKit
 
+
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
     var department: CDepartment?
     var employee: Employee?
     var rooms = [OrderRoomDetail]()
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
-
     var targetImage: UIImagePickerController!
     let download = Common.shared
     var instantStatus = [Instant]()
@@ -76,9 +77,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileEdit" {
+            let profileEditView = segue.destination as? ProfileEditViewController
+            profileEditView?.employee = self.employee
+            return
+        }
         if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
             checkoutTableView?.reservation = self.reservation
+            return
         }
         guard let departmentId = self.department?.departmentId else{
             return
@@ -87,14 +94,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         } else if department?.departmentId == 2 && segue.identifier == "toInstantServiceView" {
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         } else if department?.departmentId == 1 && segue.identifier == "toInstantServiceView" {
             let instantServiceVC = segue.destination as? InstantServiceTableViewController
             instantServiceVC?.departmentId = departmentId
             instantServiceVC?.instantStatus = instantStatus
+            instantServiceVC?.employee = employee?.name
         }
     }
     
@@ -192,6 +202,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @objc func gotoEditPage() {
         print("go to edit page")
+        performSegue(withIdentifier: "toProfileEdit", sender: nil)
     }
     
     @objc func gotoEmployeePage() {
@@ -211,7 +222,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         print("go to room view page")
     }
     
-
     @objc func gotoRatingPage() {
         performSegue(withIdentifier: "toRatingsPage", sender: nil)
     }
@@ -220,6 +230,29 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         self.present(targetImage, animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true) { () -> Void in
+            guard let employee = self.employee else {
+                assertionFailure("employee is nil")
+                return
+            }
+            guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+                let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
+                    assertionFailure("image is not ready")
+                    return
+            }
+            
+            let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
+            let employeeAuth = EmployeeAuth()
+            let parameters = ["action":"updateImage", "idEmployee":"\(employee.id)", "imageBase64":imageDataString]
+            employeeAuth.updateEmployeeImage(parameters as [String : Any]).done { data in
+                if data != "0" {
+                    self.employeeImageView.image = pickedImage
+                }
+            }
+        }
+    }
+        
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
@@ -244,29 +277,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             print("getEmployeeStatus resultObject: \(resultObject)")
             
             self.instantStatus = resultObject
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.dismiss(animated: true) { () -> Void in
-            guard let employee = self.employee else {
-                assertionFailure("employee is nil")
-                return
-            }
-            guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-                let imageData = pickedImage.jpegData(compressionQuality: 0.75) else {
-                assertionFailure("image is not ready")
-                return
-            }
-
-            let imageDataString = imageData.base64EncodedString(options: .lineLength64Characters)
-            let employeeAuth = EmployeeAuth()
-            let parameters = ["action":"updateImage", "idEmployee":"\(employee.id)", "imageBase64":imageDataString]
-            employeeAuth.updateEmployeeImage(parameters as [String : Any]).done { data in
-                if data != "0" {
-                    self.employeeImageView.image = pickedImage
-                }
-            }
         }
     }
     
@@ -301,10 +311,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-    @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
-        
-    }
+        @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
+            
+        }
+    
 }
+    
 
 
 extension Array where Element: Equatable {
