@@ -11,22 +11,9 @@ import UIKit
 class RoomTableViewController: UITableViewController {
     
     var objects = [Room]()
-    //    var images: [Int: UIImage]?
+    let communicator = Communicator.shared
     
-    //    var rooms:[Room] = [
-    //        Room(RoomTypeName: "海景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$4100", image: "r1.jpg"),
-    //
-    //        Room(RoomTypeName: "山景標準雙人房", RoomSize: "35平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "5間", Price: "$3800", image: "r3.jpg"),
-    //
-    //        Room(RoomTypeName: "海景標準四人房", RoomSize: "45平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5300", image: "r2.jpeg"),
-    //
-    //        Room(RoomTypeName: "山景標準四人房", RoomSize: "45平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "2間", Price: "$4900", image: "r4.jpg"),
-    //
-    //        Room(RoomTypeName: "海景精緻雙人房", RoomSize: "42平方公尺", Bed: "1張雙人床", AdultQuantity: "2", ChildQuantity: "1", RoomQuantity: "3間", Price: "$5800", image: "r5.jpg"),
-    //
-    //        Room(RoomTypeName: "山景精緻雙人房", RoomSize: "42平方公尺", Bed: "2張雙人床", AdultQuantity: "2", ChildQuantity: "2", RoomQuantity: "3間", Price: "$5400", image: "r6.jpg")
-    //    ]
-    
+    @IBOutlet var roomsTableView: UITableView!
     //增加背景圖
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,16 +22,14 @@ class RoomTableViewController: UITableViewController {
         let backgroundImage = UIImage(named: "employee_home_background")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView
+        
+        self.tableView.reloadData()//刷新tableView
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 移除返回按鈕的標題
-        //       navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        
-        
+
         let urlString = Common.SERVER_URL + "/RoomTypeServlet?action=getAll"
         
         guard let url = URL(string: urlString) else {
@@ -68,6 +53,9 @@ class RoomTableViewController: UITableViewController {
             self.tableView.reloadData()//刷新tableView
         }
         
+//        DispatchQueue.main.async {
+//            self.roomsTableView.reloadData()
+//        }
         
     }
     
@@ -93,34 +81,29 @@ class RoomTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RoomTableViewCell
         
-        cell.nameLabel?.text = objects[indexPath.row].name
-        cell.typeLabel?.text = objects[indexPath.row].roomSize
-        cell.priceLabel?.text = String(objects[indexPath.row].price)
+        let room = objects[indexPath.row]
+        let id = room.id
         cell.roomImage.image = UIImage(named: "picture")
-        
-        defer {
-            let imageUrl = Common.SERVER_URL + "/RoomTypeServlet?action=getImage&imageId=\(objects[indexPath.row].id)"
-            
-            let url = URL(string: imageUrl)
-            
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                cell.roomImage.image = UIImage(data: data!)
+        communicator.getPhotoById(id: id) { (result, error) in
+
+            guard let data = result else {
+                return
+            }
+
+            if let currentIndexPath = tableView.indexPath(for: cell), currentIndexPath == indexPath {
+                DispatchQueue.main.async {
+                    cell.roomImage.image = UIImage(data: data)
+                }
+
+                cell.nameLabel?.text = room.name
+                cell.typeLabel?.text = room.roomSize
+                cell.priceLabel?.text = String(room.price)
+
             }
         }
         
-        
         return cell
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
     
     
     // Override to support editing the table view. Swipe-to-delete-向左滑刪除
@@ -131,6 +114,7 @@ class RoomTableViewController: UITableViewController {
         }
     }
     
+
     
     /*
      // Override to support rearranging the table view.
@@ -152,13 +136,27 @@ class RoomTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRoomDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let destinationController = segue.destination as! RoomDetailViewController
+                let destinationController = segue.destination as! RoomDetailTableViewController
                 destinationController.room = objects[indexPath.row]
             }
         }
     }
     
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue) {
+//        guard segue.identifier == "save" else {
+//            return
+//        }
+//        //新增Room
+//        //取得剛剛建立的Room
+//        let source = segue.source as! RoomDetailTableViewController//強制轉型為RoomDetailTableViewController
+//        if let room = source.roomEdit {//過濾掉roomEdit為nil狀況
+//            if let selectedInPath = tableView.indexPathForSelectedRow{
+//                //修改room
+//                objects[selectedInPath.row] = room
+//                //重新整理該indexpath
+//                tableView.reloadRows(at: [selectedInPath], with: .automatic)
+//            }
+//        }
     }
     
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BC0DB9F21B2F855003B3C05 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */; };
+		2BC0DBA121B337EA003B3C05 /* RoomDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */; };
+		2BC0DBA521B69A96003B3C05 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBA421B69A96003B3C05 /* Communicator.swift */; };
 		AC6E9A0D66E7D6C1A52D9D21 /* Pods_iOS_Merchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */; };
 		CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */; };
 		CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */; };
@@ -14,7 +17,6 @@
 		CD77EBF9219C7EDD003EE5AE /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF8219C7EDD003EE5AE /* Room.swift */; };
 		CD77EBFC219C7EFD003EE5AE /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFA219C7EFD003EE5AE /* RoomTableViewCell.swift */; };
 		CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFB219C7EFD003EE5AE /* RoomDetailTableViewCell.swift */; };
-		CD77EC01219C7F15003EE5AE /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */; };
 		CD77EC02219C7F15003EE5AE /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */; };
 		CD77EC03219C7F15003EE5AE /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */; };
 		D10E45B6216BB63700D0848F /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = D10E45B5216BB63700D0848F /* traffic.png */; };
@@ -41,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailTableViewController.swift; sourceTree = "<group>"; };
+		2BC0DBA421B69A96003B3C05 /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Merchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE82EFBAEBE35A5B0D8DED /* Pods-iOS-Merchant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.debug.xcconfig"; sourceTree = "<group>"; };
 		7A9BF6BC93FCE2AEEEC01533 /* Pods-iOS-Merchant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,7 +55,6 @@
 		CD77EBF8219C7EDD003EE5AE /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CD77EBFA219C7EFD003EE5AE /* RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		CD77EBFB219C7EFD003EE5AE /* RoomDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailTableViewCell.swift; sourceTree = "<group>"; };
-		CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
 		CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		D10E45B5216BB63700D0848F /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
@@ -171,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CD77EC00219C7F15003EE5AE /* AddRoomTableViewController.swift */,
-				CD77EBFE219C7F14003EE5AE /* RoomDetailViewController.swift */,
+				2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */,
 				CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */,
 				CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */,
 				D12463BF21644D9500190E42 /* ViewController.swift */,
@@ -191,6 +195,8 @@
 				D1A9EF6B2180571800E0B9AD /* Employee.swift */,
 				D1F1DDE12181ECD9007BFF1E /* OrderDetail.swift */,
 				D1F1DDE321822346007BFF1E /* Common.swift */,
+				2BC0DBA421B69A96003B3C05 /* Communicator.swift */,
+				2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,12 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC0DBA521B69A96003B3C05 /* Communicator.swift in Sources */,
 				CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */,
 				CD77EC03219C7F15003EE5AE /* AddRoomTableViewController.swift in Sources */,
 				CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */,
 				CD77EBF9219C7EDD003EE5AE /* Room.swift in Sources */,
 				D18836E82167D2BD0051A041 /* ProfileViewController.swift in Sources */,
-				CD77EC01219C7F15003EE5AE /* RoomDetailViewController.swift in Sources */,
 				D1A9EF6C2180571800E0B9AD /* Employee.swift in Sources */,
 				CD77EC02219C7F15003EE5AE /* RoomTableViewController.swift in Sources */,
 				D1DE9505217AC13100B6CE63 /* Department.swift in Sources */,
@@ -330,9 +336,11 @@
 				D12463C021644D9500190E42 /* ViewController.swift in Sources */,
 				D12463BE21644D9500190E42 /* AppDelegate.swift in Sources */,
 				D1103EA6216C761E00B57132 /* CheckoutTableViewCell.swift in Sources */,
+				2BC0DBA121B337EA003B3C05 /* RoomDetailTableViewController.swift in Sources */,
 				D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */,
 				CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */,
 				D1F1DDE22181ECD9007BFF1E /* OrderDetail.swift in Sources */,
+				2BC0DB9F21B2F855003B3C05 /* LogHelper.swift in Sources */,
 				D1F1DDE421822346007BFF1E /* Common.swift in Sources */,
 				D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */,
 				CD77EBF7219C781D003EE5AE /* Event.swift in Sources */,

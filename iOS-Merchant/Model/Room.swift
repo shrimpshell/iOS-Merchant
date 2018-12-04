@@ -87,12 +87,12 @@ struct Room: Codable {//建立struct Room格式化資料使用,須參考JSON結�
 //    }
 }
 
-typealias DownloadDoneHandler = ([Room]?, Error?) -> Void//closure取別名
+typealias RoomDownloadDoneHandler = ([Room]?, Error?) -> Void//closure取別名
 
 class RoomDownloaderAndUploader {
     
     //取得所有房型資料
-    class func downloadRoom(url: URL, doneHandler: @escaping DownloadDoneHandler) {//class method
+    class func downloadRoom(url: URL, doneHandler: @escaping RoomDownloadDoneHandler) {//class method
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
