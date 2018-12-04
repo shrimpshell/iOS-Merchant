@@ -23,11 +23,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var targetImage: UIImagePickerController!
     let download = Common.shared
     var instantStatus = [Instant]()
-<<<<<<< HEAD
     var socket: WebSocket!
-    var targetImage: UIImagePickerController!
-=======
->>>>>>> develop
+
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -268,12 +265,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
         }
     }
-<<<<<<< HEAD
-            
-    
-=======
-        
->>>>>>> develop
+
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
@@ -332,7 +324,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-<<<<<<< HEAD
+
     func showLocalNotification(_ message: Socket) {
         getServiceItem(idInstantService: (department?.departmentId)!)
         print("Debug >>> showLocalNotification")
@@ -374,12 +366,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("got some data: \(data.count)")
     }
-=======
-        @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
-            
-        }
     
->>>>>>> develop
+    @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
+        
+    }
+    
+
 }
     
 
