@@ -20,10 +20,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var rooms = [OrderRoomDetail]()
     var instants = [OrderInstantDetail]()
     var reservation = [Reservation]()
+    var targetImage: UIImagePickerController!
     let download = Common.shared
     var instantStatus = [Instant]()
+<<<<<<< HEAD
     var socket: WebSocket!
     var targetImage: UIImagePickerController!
+=======
+>>>>>>> develop
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -89,9 +93,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileEdit" {
+            let profileEditView = segue.destination as? ProfileEditViewController
+            profileEditView?.employee = self.employee
+            return
+        }
         if department?.departmentId == 4 && segue.identifier == "toCheckoutView" {
             let checkoutTableView = segue.destination as? CheckoutTableViewController
             checkoutTableView?.reservation = self.reservation
+            return
         }
         guard let departmentId = self.department?.departmentId else{
             return
@@ -208,11 +218,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @objc func gotoEditPage() {
         print("go to edit page")
+        performSegue(withIdentifier: "toProfileEdit", sender: nil)
     }
     
     @objc func gotoEmployeePage() {
         print("go to employee page")
     }
+    
     
     @objc func gotoRoomPage() {
         print("go to room page")
@@ -227,7 +239,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @objc func gotoRatingPage() {
-        
+        performSegue(withIdentifier: "toRatingsPage", sender: nil)
     }
     
     @objc func selectPhotoFromGallery() {
@@ -256,8 +268,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             }
         }
     }
+<<<<<<< HEAD
             
     
+=======
+        
+>>>>>>> develop
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
             if let error = error {
@@ -284,7 +300,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             self.instantStatus = resultObject
         }
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true) {
@@ -317,6 +332,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
+<<<<<<< HEAD
     func showLocalNotification(_ message: Socket) {
         getServiceItem(idInstantService: (department?.departmentId)!)
         print("Debug >>> showLocalNotification")
@@ -358,7 +374,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("got some data: \(data.count)")
     }
+=======
+        @IBAction func unwindToProfileViewPage(_ segue: UIStoryboardSegue){
+            
+        }
+    
+>>>>>>> develop
 }
+    
+
 
 extension Array where Element: Equatable {
     func removeDeuplicates() -> [Element] {
