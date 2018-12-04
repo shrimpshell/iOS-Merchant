@@ -9,9 +9,11 @@
 import UIKit
 import Photos
 import PromiseKit
+import Starscream
+import UserNotifications
 
 
-class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, WebSocketDelegate {
 
     var department: CDepartment?
     var employee: Employee?
@@ -20,6 +22,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     var reservation = [Reservation]()
     let download = Common.shared
     var instantStatus = [Instant]()
+    var socket: WebSocket!
     var targetImage: UIImagePickerController!
 
     
@@ -63,6 +66,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         
+        guard let groupId = department?.departmentId.description else {
+            return
+        }
+        socketConnect(userId: (employee?.name)!, groupId: groupId)
+        
         switch department?.departmentId {
         case 1:
             getServiceItem(idInstantService: 1)
@@ -74,6 +82,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             break
         }
        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        socketDisConnect()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -245,18 +257,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
     
     func getServiceItem(idInstantService: Int) {
         download.getEmployeeStatus(idInstantService: idInstantService) { (result, error) in
@@ -315,6 +315,48 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             // same same
             print("User has denied the permission.")
         }
+    }
+    
+    func showLocalNotification(_ message: Socket) {
+        getServiceItem(idInstantService: (department?.departmentId)!)
+        print("Debug >>> showLocalNotification")
+        
+    }
+    
+    func socketConnect(userId: String, groupId: String) {
+        socket = WebSocket(url: URL(string: download.SOCKET_URL + userId + "/" + groupId)!)
+        socket.delegate = self
+        socket.connect()
+    }
+    
+    func socketDisConnect() {
+        socket.disconnect()
+    }
+    
+    func socketSendMessage(socketMessage: String) {
+        socket.write(string: socketMessage)
+        
+    }
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        print("websocket is disconnected: \(error?.localizedDescription)")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("got some text: \(text)")
+        let decoder = JSONDecoder()
+        let jsonData = text.data(using: String.Encoding.utf8, allowLossyConversion: true)!
+        let message = try! decoder.decode(Socket.self, from: jsonData)
+        
+        showLocalNotification(message)
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("got some data: \(data.count)")
     }
 }
 
