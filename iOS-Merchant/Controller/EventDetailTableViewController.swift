@@ -45,11 +45,11 @@ class EventDetailTableViewController: UITableViewController, UIImagePickerContro
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let  event = event {
-            nameTextField.text = event.name
-            startDateLabel.text = event.start
-            endDateLabel.text = event.end
-        }
+//        if let  event = event {
+//            nameTextField.text = event.name
+//            startDateLabel.text = event.start
+//            endDateLabel.text = event.end
+//        }
         
         updateSaveButtonState()
         
@@ -259,7 +259,7 @@ class EventDetailTableViewController: UITableViewController, UIImagePickerContro
         
         
         
-        if self.event != nil {
+        if self.event != nil {//修改活動
             let id = self.event?.eventId
             let event = Event(eventId: id!, discount: discountDB!, name: nameDB, description: description, start: start, end: end)
             
@@ -313,7 +313,7 @@ class EventDetailTableViewController: UITableViewController, UIImagePickerContro
                 }
             }
             
-        } else {
+        } else {//新增活動
             
             let event = Event(eventId: id, discount: discountDB!, name: nameDB, description: description, start: start, end: end)
             
