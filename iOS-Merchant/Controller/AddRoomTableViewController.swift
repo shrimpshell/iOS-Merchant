@@ -130,7 +130,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
         encoder.outputFormatting = .prettyPrinted
         
         guard let roomData = try? encoder.encode(room) else {
-            assertionFailure("Cast news to json is Fail.")
+            assertionFailure("Cast room to json is Fail.")
             return
         }
         

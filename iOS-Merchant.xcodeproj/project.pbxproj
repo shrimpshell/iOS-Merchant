@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BC0DB9F21B2F855003B3C05 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */; };
+		2BC0DB9F21B2F855003B3C05 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DB9E21B2F855003B3C05 /* Helper.swift */; };
 		2BC0DBA121B337EA003B3C05 /* RoomDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */; };
 		2BC0DBA521B69A96003B3C05 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBA421B69A96003B3C05 /* Communicator.swift */; };
+		2BC0DBA921B7AC43003B3C05 /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBA821B7AC43003B3C05 /* EventDetailTableViewController.swift */; };
+		2BC0DBAB21B84B41003B3C05 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0DBAA21B84B41003B3C05 /* UIImage+Resize.swift */; };
+		2BC0DBAD21B85356003B3C05 /* photo-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC0DBAC21B85355003B3C05 /* photo-camera.png */; };
 		AC6E9A0D66E7D6C1A52D9D21 /* Pods_iOS_Merchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */; };
 		CD77EBF3219C77E2003EE5AE /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */; };
 		CD77EBF5219C77FF003EE5AE /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77EBF4219C77FF003EE5AE /* EventTableViewCell.swift */; };
@@ -43,9 +46,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		2BC0DB9E21B2F855003B3C05 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailTableViewController.swift; sourceTree = "<group>"; };
 		2BC0DBA421B69A96003B3C05 /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
+		2BC0DBA821B7AC43003B3C05 /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailTableViewController.swift; sourceTree = "<group>"; };
+		2BC0DBAA21B84B41003B3C05 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		2BC0DBAC21B85355003B3C05 /* photo-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-camera.png"; sourceTree = "<group>"; };
 		638D78772180BF194EDEE117 /* Pods_iOS_Merchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Merchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE82EFBAEBE35A5B0D8DED /* Pods-iOS-Merchant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.debug.xcconfig"; sourceTree = "<group>"; };
 		7A9BF6BC93FCE2AEEEC01533 /* Pods-iOS-Merchant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-Merchant.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS-Merchant/Pods-iOS-Merchant.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,11 +165,12 @@
 		D186E3CE216B24EC004F864E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				2BC0DBAC21B85355003B3C05 /* photo-camera.png */,
 				D1DE9502217AC10000B6CE63 /* event.png */,
 				D1DE9500217AC00200B6CE63 /* food.png */,
 				D1DE94FE217ABEEF00B6CE63 /* clean.png */,
-				D1DE94FB217ABEB000B6CE63 /* edit.png */,
 				D1DE94FA217ABEB000B6CE63 /* employees.png */,
+				D1DE94FB217ABEB000B6CE63 /* edit.png */,
 				D10E45B5216BB63700D0848F /* traffic.png */,
 				D186E3CC216B24E4004F864E /* checkout.png */,
 				D186E3CA216B24D7004F864E /* room.png */,
@@ -178,6 +185,7 @@
 				2BC0DBA021B337EA003B3C05 /* RoomDetailTableViewController.swift */,
 				CD77EBFF219C7F14003EE5AE /* RoomTableViewController.swift */,
 				CD77EBF2219C77E2003EE5AE /* EventTableViewController.swift */,
+				2BC0DBA821B7AC43003B3C05 /* EventDetailTableViewController.swift */,
 				D12463BF21644D9500190E42 /* ViewController.swift */,
 				D18836E72167D2BD0051A041 /* ProfileViewController.swift */,
 				D1103E47216C366E00B57132 /* CheckoutTableViewController.swift */,
@@ -196,7 +204,8 @@
 				D1F1DDE12181ECD9007BFF1E /* OrderDetail.swift */,
 				D1F1DDE321822346007BFF1E /* Common.swift */,
 				2BC0DBA421B69A96003B3C05 /* Communicator.swift */,
-				2BC0DB9E21B2F855003B3C05 /* LogHelper.swift */,
+				2BC0DBAA21B84B41003B3C05 /* UIImage+Resize.swift */,
+				2BC0DB9E21B2F855003B3C05 /* Helper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +277,7 @@
 				D186E3CB216B24D7004F864E /* room.png in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
+				2BC0DBAD21B85356003B3C05 /* photo-camera.png in Resources */,
 				D12463C321644D9500190E42 /* Main.storyboard in Resources */,
 				D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */,
 				D1DE9503217AC10000B6CE63 /* event.png in Resources */,
@@ -340,8 +350,10 @@
 				D16029D7216F4E83006D1BC1 /* Reservation.swift in Sources */,
 				CD77EBFD219C7EFD003EE5AE /* RoomDetailTableViewCell.swift in Sources */,
 				D1F1DDE22181ECD9007BFF1E /* OrderDetail.swift in Sources */,
-				2BC0DB9F21B2F855003B3C05 /* LogHelper.swift in Sources */,
+				2BC0DB9F21B2F855003B3C05 /* Helper.swift in Sources */,
 				D1F1DDE421822346007BFF1E /* Common.swift in Sources */,
+				2BC0DBA921B7AC43003B3C05 /* EventDetailTableViewController.swift in Sources */,
+				2BC0DBAB21B84B41003B3C05 /* UIImage+Resize.swift in Sources */,
 				D1103E48216C366E00B57132 /* CheckoutTableViewController.swift in Sources */,
 				CD77EBF7219C781D003EE5AE /* Event.swift in Sources */,
 			);

@@ -17,20 +17,6 @@ struct Room: Codable {//建立struct Room格式化資料使用,須參考JSON結�
     var childQuantity: Int
     var roomQuantity: Int
     var price: Int
-//    var roomPic: UIImage
-    
-    
-//    enum CodingKeys: String, CodingKey {
-//        case idRoomType = "IdRoomType"
-//        case roomTypeName = "RoomTypeName"
-//        case roomSize = "RoomSize"
-//        case bed = "Bed"
-//        case adultQuantity = "AdultQuantity"
-//        case childQuantity = "ChildQuantity"
-//        case roomQuantity = "RoomQuantity"
-//        case price = "Price"
-//        case roomPic = "RoomPic"
-//    }
 }
 
 typealias RoomDownloadDoneHandler = ([Room]?, Error?) -> Void//closure取別名

@@ -10,25 +10,73 @@ import UIKit
 
 class EventTableViewController: UITableViewController {
     
-    var events: [Event] = [
-        Event(Events_Name: "room1", Events_Description: "this is room 1", discount: 0.9, Events_Start_Datetime: "2018-09-22 00:00:00", Events_End_Datetime: "2018-09-23 00:00:00", image: "4.jpeg"),
-        Event(Events_Name: "event2", Events_Description: "this is event 2", discount: 0.8, Events_Start_Datetime: "2018-09-23 00:00:00", Events_End_Datetime: "2018-09-24 00:00:00", image: "2.png"),
-        Event(Events_Name: "APP Shrimp", Events_Description: "use this app for discount", discount: 0.2, Events_Start_Datetime: "2018-09-30 00:00:00", Events_End_Datetime: "2018-10-23 00:00:00", image: "iTunesArtwork.png"),
-        Event(Events_Name: "中秋限定！", Events_Description: "moon festival passed", discount: 0.5, Events_Start_Datetime: "2018-09-28 00:00:00", Events_End_Datetime: "2018-09-29 00:00:00", image: "3.jpeg"),
-        Event(Events_Name: "秋季特價", Events_Description: "this is an event", discount: 0.9, Events_Start_Datetime: "2018-09-28 00:00:00", Events_End_Datetime: "2018-09-29 00:00:00", image: "5.jpeg"),
-        Event(Events_Name: "聖誕歡慶", Events_Description: "歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠歡慶聖誕節，聖誕節期間限定優惠", discount: 0.7, Events_Start_Datetime: "2018-12-21 00:00:00", Events_End_Datetime: "2018-12-26 00:00:00", image: "6.jpg")
-    ]
+    var events = [Event]()
+    
+    let communicator = Communicator.shared
+    let PHOTO_URL = Common.SERVER_URL + "/EventServlet"
+    @IBOutlet var eventsTableView: UITableView!
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //啟用 navigation 導覽列上的編輯 tableView 鈕
+//        navigationItem.leftBarButtonItem = editButtonItem
+        
+        //取得活動訊息資訊（文字部分）
+       communicator.getAllEvents{ (result, error) in
+            if let error = error {
+                print(" Load Data Error: \(error)")
+                return
+            }
+            guard let result = result else {
+                print (" result is nil")
+                return
+            }
+            print("Load Data OK.")
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
+                print(" Fail to generate jsonData.")
+                return
+            }
+            //解碼
+            let decoder = JSONDecoder()
+            guard let resultObject = try? decoder.decode([Event].self, from: jsonData) else {
+                print(" Fail to decode jsonData.")
+                return
+            }
+            for eventItem in resultObject {
+                self.events.append(eventItem)
+            }
+           
+            
+            DispatchQueue.main.async {
+                self.eventsTableView.reloadData()
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "employee_home_background")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+        
+        //註冊通知
+        NotificationCenter.default.addObserver(self, selector: #selector(save), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    @objc func save() {
+       
     }
 
     // MARK: - Table view data source
@@ -44,60 +92,133 @@ class EventTableViewController: UITableViewController {
     }
 
     
+    //dataSource
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EventTableViewCell
-
-        cell.nameLabel?.text = events[indexPath.row].Events_Name
-        cell.descriptionLabel?.text = events[indexPath.row].Events_Description
-        cell.eventImageView.image = UIImage(named: events[indexPath.row].image)
-
+        
+        let event = events[indexPath.row]
+        let id = event.eventId
+        
+        communicator.getPhotoById(photoURL: self.PHOTO_URL, id: id) { (result, error) in
+            
+            guard let data = result else {
+                return
+            }
+            
+            if let currentIndexPath = tableView.indexPath(for: cell), currentIndexPath == indexPath {
+                DispatchQueue.main.async {
+                    cell.eventImageView.image = UIImage(data: data)
+                }
+                cell.nameLabel.text = event.name
+                cell.startDateLabel.text = event.start
+                cell.endDateLabel.text = event.end
+            }
+        }
         return cell
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+        
+    }
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //Delete the row from the data source
+            let event = events[indexPath.row]
+//            let id = event.eventId
+            events.remove(at: indexPath.row) //先砍資料再砍畫面
+        
+            let eventItem = event
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            
+            guard let newsData = try? encoder.encode(eventItem) else {
+                assertionFailure("Cast event to json is Fail.")
+                return
+            }
+            
+            print(String(data: newsData, encoding: .utf8)!)
+            
+            guard let eventString = String(data: newsData, encoding: .utf8) else {
+                assertionFailure("Cast newsData to String is Fail.")
+                return
+            }
+            
+            //寫入資料庫
+            communicator.eventRemove(event: eventString) { (result, error) in
+                if let error = error {
+                    print("Delete event fail: \(error)")
+                    return
+                }
+                
+                guard let updateStatus = result as? Int else {
+                    assertionFailure("delete fail.")
+                    return
+                }
+                
+                if updateStatus == 1 {
+                    //跳出成功視窗
+                    let alertController = UIAlertController(title: "完成", message:
+                        "刪除成功", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "確定", style: .default,handler: nil))
+                    self.present(alertController, animated: false, completion: nil)
+                    
+                } else {
+                    let alertController = UIAlertController(title: "失敗", message:
+                        "刪除失敗", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "確定", style: .default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }else if editingStyle == .insert {
+            //             Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
     }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // 看看使用者選到了哪一個 indexPath
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            let event = events[selectedIndexPath.row]
+            
+            // 取得下一頁
+            let destination = segue.destination as!
+            UINavigationController
+            let eventDetailTableVC = destination.topViewController as! EventDetailTableViewController
+            
+            let id = event.eventId
+            communicator.getPhotoById(photoURL: self.PHOTO_URL, id: id) { (result, error) in
+                
+                guard let data = result else {
+                    return
+                }
+               
+                DispatchQueue.main.async {
+                    eventDetailTableVC.event = event
+                    eventDetailTableVC.nameTextField.text = event.name
+                    eventDetailTableVC.startDateLabel.text = event.start
+                    eventDetailTableVC.startDatePicker.date = Helper.getDateFromString(strFormat: "yyyy-MM-dd", strDate: event.start)
+                    eventDetailTableVC.endDateLabel.text = event.end
+                    eventDetailTableVC.endDatePicker.date = Helper.getDateFromString(strFormat: "yyyy-MM-dd", strDate: event.end)
+                    eventDetailTableVC.discountTextFeild.text = String(event.discount)
+                    eventDetailTableVC.descriptionTextView.text = event.description
+                    eventDetailTableVC.eventImageView.image = UIImage(data: data)
+                }
+            }
+        }
     }
-    */
+    
 
 }

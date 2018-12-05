@@ -38,7 +38,7 @@ class RoomDetailTableViewController: UITableViewController, UIImagePickerControl
         roomImageView.image = UIImage(named: "picture")
         
         id = room.id
-        //        LogHelper.println(tag: TAG, line: #line, "id: \(id)")
+        //        Helper.println(tag: TAG, line: #line, "id: \(id)")
         
         nameTextField.text = room.name
         roomSizeTextField.text = room.roomSize
@@ -141,7 +141,7 @@ class RoomDetailTableViewController: UITableViewController, UIImagePickerControl
         encoder.outputFormatting = .prettyPrinted
         
         guard let roomData = try? encoder.encode(room) else {
-            assertionFailure("Cast news to json is Fail.")
+            assertionFailure("Cast room to json is Fail.")
             return
         }
         
