@@ -19,7 +19,6 @@ class RoomTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if objects.count == 0 {
-            print("viewWillAppear objects count == 0 ")
             // Add a background view to the table view
             let backgroundImage = UIImage(named: "employee_home_background")
             let imageView = UIImageView(image: backgroundImage)
@@ -43,7 +42,9 @@ class RoomTableViewController: UITableViewController {
                 }
                 
                 print("Items: \(items)")
-                self.objects = items//替換Master的Array
+                for item in items {
+                    self.objects.append(item)
+                }
                 self.roomsTableView.reloadData()
             }
         }
