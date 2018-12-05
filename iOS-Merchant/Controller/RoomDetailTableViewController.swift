@@ -165,12 +165,13 @@ class RoomDetailTableViewController: UITableViewController, UIImagePickerControl
             }
             
             if updateStatus == 1 {
-                //跳出成功視窗
-                let alertController = UIAlertController(title: "完成", message:
-                    "儲存成功！", preferredStyle: UIAlertController.Style.alert)
-                alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
-                self.present(alertController, animated: false, completion: nil)
-                
+//                //跳出成功視窗
+//                let alertController = UIAlertController(title: "完成", message:
+//                    "儲存成功！", preferredStyle: UIAlertController.Style.alert)
+//                alertController.addAction(UIAlertAction(title: "確定", style: UIAlertAction.Style.default,handler: nil))
+//                self.present(alertController, animated: false, completion: nil)
+                //儲存按鈕消失
+                self.savaBarButtonItem.isEnabled = false
 //                 self.dismiss(animated: true)
                 
             } else {
@@ -180,8 +181,7 @@ class RoomDetailTableViewController: UITableViewController, UIImagePickerControl
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        //儲存按鈕消失
-        self.savaBarButtonItem.isEnabled = false
+        
     }
     
 

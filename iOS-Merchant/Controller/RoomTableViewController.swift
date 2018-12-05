@@ -18,44 +18,45 @@ class RoomTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Add a background view to the table view
-        let backgroundImage = UIImage(named: "employee_home_background")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
-        
-        self.tableView.reloadData()//刷新tableView
+        if objects.count == 0 {
+            print("viewWillAppear objects count == 0 ")
+            // Add a background view to the table view
+            let backgroundImage = UIImage(named: "employee_home_background")
+            let imageView = UIImageView(image: backgroundImage)
+            self.tableView.backgroundView = imageView
+            
+            let urlString = Common.SERVER_URL + "/RoomTypeServlet?action=getAll"
+            
+            guard let url = URL(string: urlString) else {
+                assertionFailure("Invalid URL string.")
+                return
+            }
+            
+            RoomDownloaderAndUploader.downloadRoom(url: url) { (rooms, error) in
+                if let error = error {
+                    print("Download Room: \(error)")
+                    return
+                }
+                guard let items = rooms else {
+                    assertionFailure("rooms is nil.")
+                    return
+                }
+                
+                print("Items: \(items)")
+                self.objects = items//替換Master的Array
+                self.roomsTableView.reloadData()
+            }
+        }
     }
     
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        objects.removeAll()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let urlString = Common.SERVER_URL + "/RoomTypeServlet?action=getAll"
-        
-        guard let url = URL(string: urlString) else {
-            assertionFailure("Invalid URL string.")
-            return
-        }
-        
-        RoomDownloaderAndUploader.downloadRoom(url: url) { (rooms, error) in
-            if let error = error {
-                print("Download Room: \(error)")
-                return
-            }
-            guard let items = rooms else {
-                assertionFailure("rooms is nil.")
-                return
-            }
-            
-            print("Items: \(items)")
-            self.objects = items//替換Master的Array
-            
-            self.tableView.reloadData()//刷新tableView
-        }
-        
-//        DispatchQueue.main.async {
-//            self.roomsTableView.reloadData()
-//        }
         
     }
     
@@ -115,22 +116,6 @@ class RoomTableViewController: UITableViewController {
     }
     
 
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -159,7 +159,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
 //                    "儲存成功", preferredStyle: .alert)
 //                self.present(alertController, animated: true)
 //                //儲存按鈕消失
-//                self.savaBarButtonItem.isEnabled = false
+                self.savaBarButtonItem.isEnabled = false
                 self.dismiss(animated: true)
                 
             } else {
