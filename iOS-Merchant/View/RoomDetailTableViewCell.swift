@@ -11,7 +11,7 @@ import UIKit
 class RoomDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeTextField: UITextField!
     
     
     override func awakeFromNib() {
