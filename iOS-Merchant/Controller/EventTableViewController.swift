@@ -22,37 +22,7 @@ class EventTableViewController: UITableViewController {
         //啟用 navigation 導覽列上的編輯 tableView 鈕
 //        navigationItem.leftBarButtonItem = editButtonItem
         
-        //取得活動訊息資訊（文字部分）
-       communicator.getAllEvents{ (result, error) in
-            if let error = error {
-                print(" Load Data Error: \(error)")
-                return
-            }
-            guard let result = result else {
-                print (" result is nil")
-                return
-            }
-            print("Load Data OK.")
-            
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
-                print(" Fail to generate jsonData.")
-                return
-            }
-            //解碼
-            let decoder = JSONDecoder()
-            guard let resultObject = try? decoder.decode([Event].self, from: jsonData) else {
-                print(" Fail to decode jsonData.")
-                return
-            }
-            for eventItem in resultObject {
-                self.events.append(eventItem)
-            }
-           
-            
-            DispatchQueue.main.async {
-                self.eventsTableView.reloadData()
-            }
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +35,41 @@ class EventTableViewController: UITableViewController {
         
         //註冊通知
         NotificationCenter.default.addObserver(self, selector: #selector(save), name: UIApplication.willResignActiveNotification, object: nil)
+    
+        if events.count == 0 {
+            //取得活動訊息資訊（文字部分）
+            communicator.getAllEvents{ (result, error) in
+                if let error = error {
+                    print(" Load Data Error: \(error)")
+                    return
+                }
+                guard let result = result else {
+                    print (" result is nil")
+                    return
+                }
+                print("Load Data OK.")
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: result, options: .prettyPrinted) else {
+                    print(" Fail to generate jsonData.")
+                    return
+                }
+                //解碼
+                let decoder = JSONDecoder()
+                guard let resultObject = try? decoder.decode([Event].self, from: jsonData) else {
+                    print(" Fail to decode jsonData.")
+                    return
+                }
+                for eventItem in resultObject {
+                    self.events.append(eventItem)
+                }
+                
+                
+                DispatchQueue.main.async {
+                    self.eventsTableView.reloadData()
+                }
+            }
+        }
+        
     }
     
     
@@ -72,8 +77,13 @@ class EventTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        events.removeAll()
+    }
     
     @objc func save() {
        

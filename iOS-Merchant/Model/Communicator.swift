@@ -98,7 +98,7 @@ class Communicator {  //Singleton instance 單一實例模式
     }
     
     //刪除
-    func roomDelete(room: String, completion: @escaping DoneHandler) {
+    func roomRemove(room: String, completion: @escaping DoneHandler) {
         let parameters: [String: Any] = [ACTION_KEY: "roomRemove", ROOM_KEY: room]
         doPost(urlString:ROOMTYPESERVLET_URL, parameters:parameters, completion:completion)
     }

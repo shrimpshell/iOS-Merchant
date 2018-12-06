@@ -112,8 +112,58 @@ class RoomTableViewController: UITableViewController {
     // Override to support editing the table view. Swipe-to-delete-向左滑刪除
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            //Delete the row from the data source
+            let room = objects[indexPath.row]
+            //            let id = event.eventId
+            objects.remove(at: indexPath.row) //先砍資料再砍畫面
+            
+            let roomItem = room
+            
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            
+            guard let newsData = try? encoder.encode(roomItem) else {
+                assertionFailure("Cast event to json is Fail.")
+                return
+            }
+            
+            print(String(data: newsData, encoding: .utf8)!)
+            
+            guard let roomString = String(data: newsData, encoding: .utf8) else {
+                assertionFailure("Cast newsData to String is Fail.")
+                return
+            }
+            
+            //寫入資料庫
+            communicator.roomRemove(room: roomString) { (result, error) in
+                if let error = error {
+                    print("Delete room fail: \(error)")
+                    return
+                }
+                
+                guard let updateStatus = result as? Int else {
+                    assertionFailure("delete fail.")
+                    return
+                }
+                
+                if updateStatus == 1 {
+                    //跳出成功視窗
+                    let alertController = UIAlertController(title: "完成", message:
+                        "刪除成功", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "確定", style: .default,handler: nil))
+                    self.present(alertController, animated: false, completion: nil)
+                    
+                } else {
+                    let alertController = UIAlertController(title: "失敗", message:
+                        "刪除失敗", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "確定", style: .default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }else if editingStyle == .insert {
+            //             Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
