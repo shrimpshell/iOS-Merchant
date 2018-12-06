@@ -222,7 +222,7 @@ class EventTableViewController: UITableViewController {
                     eventDetailTableVC.startDatePicker.date = Helper.getDateFromString(strFormat: "yyyy-MM-dd", strDate: event.start)
                     eventDetailTableVC.endDateLabel.text = event.end
                     eventDetailTableVC.endDatePicker.date = Helper.getDateFromString(strFormat: "yyyy-MM-dd", strDate: event.end)
-                    eventDetailTableVC.discountTextFeild.text = String(event.discount)
+                    eventDetailTableVC.discountTextFeild.text = String(event.discount * 10)
                     eventDetailTableVC.descriptionTextView.text = event.description
                     eventDetailTableVC.eventImageView.image = UIImage(data: data)
                 }

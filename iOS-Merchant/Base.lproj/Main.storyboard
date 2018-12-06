@@ -1011,7 +1011,7 @@
                         <sections>
                             <tableViewSection headerTitle="活動圖片" id="Qt7-jT-Cb7">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="tBA-CI-cbX" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="tBA-CI-cbX" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tBA-CI-cbX" id="hyS-ZY-AJp">
@@ -1061,7 +1061,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="活動名稱" id="cF1-Io-QWM">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vsW-Vb-Qy5" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vsW-Vb-Qy5" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="206.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vsW-Vb-Qy5" id="dqx-et-FO9">
@@ -1090,7 +1090,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="開始日期" id="rcC-vM-img">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="I7e-nE-Qku" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="I7e-nE-Qku" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="306.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I7e-nE-Qku" id="vMw-Iw-qLq">
@@ -1112,7 +1112,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IsK-4q-qyj" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IsK-4q-qyj" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="350.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IsK-4q-qyj" id="ZAp-aW-3dH">
@@ -1141,7 +1141,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="結束日期" id="rf1-t1-4Nd">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ljP-0Q-aU6" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ljP-0Q-aU6" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="450.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ljP-0Q-aU6" id="euT-9d-WQW">
@@ -1163,7 +1163,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MrE-oI-17w" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MrE-oI-17w" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="494.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MrE-oI-17w" id="Zgi-Bq-Jy9">
@@ -1192,7 +1192,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="活動內容" id="uhg-0g-2M9">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="141" id="eaN-y2-CEg" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="141" id="eaN-y2-CEg" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="594.5" width="375" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eaN-y2-CEg" id="rPN-cg-19P">
@@ -1218,7 +1218,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="活動折扣" id="Oqh-VL-gLF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pVA-Ns-fdW" customClass="ActivitiesTableViewCell" customModule="DrinkShopStore_IOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pVA-Ns-fdW" customClass="ActivitiesTableViewCell" customModule="iOS_Merchant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="791.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pVA-Ns-fdW" id="7LA-sF-sh4">
@@ -1265,7 +1265,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextView" destination="1xn-7a-8cr" id="X7D-ZV-doI"/>
-                        <outlet property="discountTextFeild" destination="tDZ-4j-CdR" id="8Vk-gJ-cCC"/>
+                        <outlet property="discountTextFeild" destination="tDZ-4j-CdR" id="Q06-Rb-iiE"/>
                         <outlet property="endDateLabel" destination="LJj-BM-Jae" id="W06-jj-22L"/>
                         <outlet property="endDatePicker" destination="L19-2l-bp8" id="GBM-gy-UF7"/>
                         <outlet property="eventImageView" destination="6Ov-Bf-Q2e" id="auX-hj-tEG"/>
