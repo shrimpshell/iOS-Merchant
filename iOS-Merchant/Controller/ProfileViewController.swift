@@ -198,7 +198,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @objc func gotoEventPage() {
         print("go to event page")
         if let controller = storyboard?.instantiateViewController(withIdentifier: "EventView"){
-            present(controller, animated: true, completion: nil)
             navigationController?.pushViewController(controller, animated: true)
         }
     }
