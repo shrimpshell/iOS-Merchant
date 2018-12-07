@@ -40,7 +40,7 @@ class CheckoutTableViewCell: UITableViewCell {
                 statusLabel.text = "未付款"
                 contentBackground.backgroundColor = .yellow
             default:
-                statusLabel.text = "已訂房"
+                statusLabel.text = "未入住"
                 statusLabel.textColor = .white
                 dateLabel.textColor = .white
                 roomListLabel.textColor = .white
@@ -54,6 +54,9 @@ class CheckoutTableViewCell: UITableViewCell {
             var price = 0
             var roomInfo: String = ""
             var instantInfo: String = ""
+            var aMeal = 0
+            var bMeal = 0
+            var cMeal = 0
             for checkouts in ((reservation?.checkout)!) {
                 price += Int(checkouts.price)! * Int(checkouts.roomQuantity)!
                 roomInfo += "\(checkouts.RoomTypeName) x \(checkouts.roomQuantity) \n"
@@ -61,12 +64,22 @@ class CheckoutTableViewCell: UITableViewCell {
             // 即時服務
             for instants in ((reservation?.instant)!) {
                 if instants.instantPrice != nil && instants.quantity != nil && instants.instantTypeName != nil {
-                    instantInfo += "\(String(describing: instants.instantTypeName!)) x \(String(describing: instants.quantity!))\n"
+//                    instantInfo += "\(String(describing: instants.instantTypeName!)) x \(String(describing: instants.quantity!))\n"
+                    switch instants.instantTypeName! {
+                    case "A餐":
+                        aMeal = aMeal + Int(instants.quantity!)!
+                    case "B餐":
+                        bMeal = bMeal + Int(instants.quantity!)!
+                    case "C餐":
+                        cMeal = cMeal + Int(instants.quantity!)!
+                    default:
+                        break
+                    }
                     price += Int(instants.instantPrice!)! * Int(instants.quantity!)!
                 }
             }
             roomListLabel.text = roomInfo
-            instantLabel.text = instantInfo
+            instantLabel.text = "A餐：\(aMeal)\nB餐：\(bMeal)\nC餐：\(cMeal)"
             instantLabel.sizeToFit()
             priceLabel.text = "$\(price)"
             
