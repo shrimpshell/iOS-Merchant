@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileEditViewController: UIViewController {
+class ProfileEditViewController: UIViewController, UITextFieldDelegate {
     var employee: Employee?
 
     @IBOutlet weak var id: UILabel!
@@ -42,6 +42,7 @@ class ProfileEditViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+ 
     
     func showEmployeeInfo(id: Int, name: String, password: String, email: String, gender: String, phone: String, address: String, departmentId: Int) {
         self.id.text = id == 0 ? "" : "員工編號：\(id)"
@@ -65,6 +66,11 @@ class ProfileEditViewController: UIViewController {
         self.password.text = password
         self.phone.text = phone
         self.address.text = address
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func editButtonPressed(_ sender: Any) {
