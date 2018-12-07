@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 
-class ResponseRatingViewController: UIViewController {
+class ResponseRatingViewController: UIViewController, UITextViewDelegate {
     
     var rating: Rating?
     let ratingPromiseKitAuth = RatingPromiseKitAuth()
@@ -23,12 +23,14 @@ class ResponseRatingViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var customerOpinionLabel: UITextView!
     @IBOutlet weak var serviceResponseLabel: UITextView!
+    @IBOutlet weak var banImageView: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showRatingDetail()
         cornerRadius(view: serviceResponseLabel)
+        serviceResponseLabel.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -67,7 +69,11 @@ class ResponseRatingViewController: UIViewController {
                 return
             }
             printHelper.println(tag: "RatingListTableViewController", line: #line, "Retrive Rating List is OK: \(result)")
+            if "\(result)" == "1" {
+                self.banImageView.image = UIImage(named: "ban.png")
+            }
         }
+    
         self.performSegue(withIdentifier: "goToAllRatingTablePage", sender: self.sendResponseBtn)
     }
     
@@ -108,6 +114,9 @@ class ResponseRatingViewController: UIViewController {
         if rating?.review != nil {
             serviceResponseLabel.text = rating?.review
         }
+        if rating?.ratingStatus == 3 {
+            self.banImageView.image = UIImage(named: "ban.png")
+        }
     }
     
     func updateReview(ratingData: Rating) {
@@ -122,5 +131,14 @@ class ResponseRatingViewController: UIViewController {
                 self.showAlert(message: "會員資料修改失敗")
             }
         }
+    }
+    
+    //藏鍵盤
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

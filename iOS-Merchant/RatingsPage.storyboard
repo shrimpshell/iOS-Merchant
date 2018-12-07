@@ -181,13 +181,20 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b5p-bZ-kAY">
+                                                        <rect key="frame" x="97" y="58" width="100" height="100"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.85097801689999997" green="0.8509646058" blue="0.85098129509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="b5p-bZ-kAY" secondAttribute="trailing" constant="98" id="08e-KQ-uq3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="b5p-bZ-kAY" secondAttribute="bottom" constant="58.5" id="7Xz-pp-OIM"/>
                                                     <constraint firstAttribute="trailing" secondItem="o21-sh-65c" secondAttribute="trailing" id="Z3Q-dC-KWG"/>
                                                     <constraint firstAttribute="bottom" secondItem="o21-sh-65c" secondAttribute="bottom" id="hAb-kt-q1n"/>
                                                     <constraint firstItem="o21-sh-65c" firstAttribute="leading" secondItem="iuE-RN-s1I" secondAttribute="leading" id="jzX-FK-zUp"/>
+                                                    <constraint firstItem="b5p-bZ-kAY" firstAttribute="top" secondItem="iuE-RN-s1I" secondAttribute="top" constant="58" id="mjG-nK-HWV"/>
                                                     <constraint firstItem="o21-sh-65c" firstAttribute="top" secondItem="iuE-RN-s1I" secondAttribute="top" id="r9U-hl-6P0"/>
+                                                    <constraint firstItem="b5p-bZ-kAY" firstAttribute="leading" secondItem="iuE-RN-s1I" secondAttribute="leading" constant="97" id="rfc-H0-TX3"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtK-KS-zeB">
@@ -286,6 +293,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="banImageView" destination="b5p-bZ-kAY" id="gSV-1i-9cU"/>
                         <outlet property="customerNameLabel" destination="ZGP-4P-mTJ" id="cqY-7s-Zp2"/>
                         <outlet property="customerOpinionLabel" destination="o21-sh-65c" id="xjn-OS-wNO"/>
                         <outlet property="dateLabel" destination="Csz-r3-3KE" id="4bz-0d-N5T"/>
