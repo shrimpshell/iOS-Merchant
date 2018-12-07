@@ -40,7 +40,7 @@ class CheckoutTableViewCell: UITableViewCell {
                 statusLabel.text = "未付款"
                 contentBackground.backgroundColor = .yellow
             default:
-                statusLabel.text = "已訂房"
+                statusLabel.text = "未入住"
                 statusLabel.textColor = .white
                 dateLabel.textColor = .white
                 roomListLabel.textColor = .white
