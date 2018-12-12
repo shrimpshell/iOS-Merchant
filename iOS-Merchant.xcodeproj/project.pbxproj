@@ -35,6 +35,7 @@
 		7818C9CD21B0F1DD00E6111D /* ResponseRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7818C9CC21B0F1DD00E6111D /* ResponseRatingViewController.swift */; };
 		7818C9CF21B12EBE00E6111D /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7818C9CE21B12EBE00E6111D /* ShowAlert.swift */; };
 		7818C9D121B165B600E6111D /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7818C9D021B165B500E6111D /* CornerRadius.swift */; };
+		784E99D221BA557300A7847C /* ban.png in Resources */ = {isa = PBXBuildFile; fileRef = 784E99D121BA557300A7847C /* ban.png */; };
 		789C8CBE21AD155800F94AF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789C8CBC21AD155700F94AF8 /* Main.storyboard */; };
 		789C8CC221AD1BBF00F94AF8 /* AllRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789C8CC121AD1BBF00F94AF8 /* AllRatingsTableViewController.swift */; };
 		789C8CC421AD1CCC00F94AF8 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789C8CC321AD1CCC00F94AF8 /* Rating.swift */; };
@@ -93,6 +94,7 @@
 		7818C9CC21B0F1DD00E6111D /* ResponseRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRatingViewController.swift; sourceTree = "<group>"; };
 		7818C9CE21B12EBE00E6111D /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		7818C9D021B165B500E6111D /* CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		784E99D121BA557300A7847C /* ban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ban.png; sourceTree = "<group>"; };
 		789C8CBD21AD155700F94AF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		789C8CC121AD1BBF00F94AF8 /* AllRatingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRatingsTableViewController.swift; sourceTree = "<group>"; };
 		789C8CC321AD1CCC00F94AF8 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				2BC0DBC621B91A97003B3C05 /* photo-camera.png */,
+				784E99D121BA557300A7847C /* ban.png */,
 				D1DE9502217AC10000B6CE63 /* event.png */,
 				D1DE9500217AC00200B6CE63 /* food.png */,
 				72854A4D21A58F5100EE7C3A /* icon_unfinish.png */,
@@ -358,6 +361,7 @@
 				D186E3CB216B24D7004F864E /* room.png in Resources */,
 				D12463C821644D9600190E42 /* LaunchScreen.storyboard in Resources */,
 				D12463C521644D9600190E42 /* Assets.xcassets in Resources */,
+				784E99D221BA557300A7847C /* ban.png in Resources */,
 				726A26F721AD2318005B4BD2 /* Josh.storyboard in Resources */,
 				D1DE94FC217ABEB000B6CE63 /* employees.png in Resources */,
 				D1DE9503217AC10000B6CE63 /* event.png in Resources */,

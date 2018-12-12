@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         guard let groupId = department?.departmentId.description else {
             return
         }
-        socketConnect(userId: (employee?.name)!, groupId: groupId)
+        socketConnect(userId: (employee?.email)!, groupId: groupId)
         
         switch department?.departmentId {
         case 1:
