@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WhJ-my-lho">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Edit View Controller-->
+        <scene sceneID="Tjj-Y5-9MV">
+            <objects>
+                <viewController id="WhJ-my-lho" customClass="ProfileEditViewController" customModule="iOS_Merchant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wIU-KP-0HE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="employee_home_background" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-4C-Dmp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="B8f-U5-brq">
+                                <rect key="frame" x="16" y="36" width="343" height="162.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="員工編號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXb-7W-mMy">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="員工姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V09-VQ-pBi">
+                                        <rect key="frame" x="0.0" y="35.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="員工性別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd2-Wu-eLH">
+                                        <rect key="frame" x="0.0" y="71" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="員工帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpo-a8-RYY">
+                                        <rect key="frame" x="0.0" y="106.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="員工部門" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7S-76-0g0">
+                                        <rect key="frame" x="0.0" y="142" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGg-iY-j31">
+                                <rect key="frame" x="16" y="353" width="41" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="修改">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="WhJ-my-lho" eventType="touchUpInside" id="yQ5-pD-XY1"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="8FG-Ol-Ltr">
+                                <rect key="frame" x="16" y="229" width="343" height="94"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="設定密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1KK-uR-Qvh">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WhJ-my-lho" id="Yk2-de-fGN"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="設定電話號碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2H-Yy-cu6">
+                                        <rect key="frame" x="0.0" y="32" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WhJ-my-lho" id="wpg-sd-9FC"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="設定住址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hfB-fZ-Ywv">
+                                        <rect key="frame" x="0.0" y="64" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="WhJ-my-lho" id="3cQ-O9-Vf8"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8FG-Ol-Ltr" firstAttribute="top" secondItem="B8f-U5-brq" secondAttribute="bottom" constant="30.5" id="0iZ-3T-njx"/>
+                            <constraint firstItem="B8f-U5-brq" firstAttribute="top" secondItem="7Nx-fo-jZM" secondAttribute="top" constant="16" id="34k-ar-uGf"/>
+                            <constraint firstItem="DGg-iY-j31" firstAttribute="leading" secondItem="7Nx-fo-jZM" secondAttribute="leading" constant="16" id="HHe-y4-JGI"/>
+                            <constraint firstItem="8FG-Ol-Ltr" firstAttribute="leading" secondItem="7Nx-fo-jZM" secondAttribute="leading" constant="16" id="Haz-36-eNg"/>
+                            <constraint firstItem="a5d-4C-Dmp" firstAttribute="trailing" secondItem="7Nx-fo-jZM" secondAttribute="trailing" id="IWb-qr-MPX"/>
+                            <constraint firstItem="DGg-iY-j31" firstAttribute="top" secondItem="8FG-Ol-Ltr" secondAttribute="bottom" constant="30" id="Kll-ZQ-hju"/>
+                            <constraint firstItem="7Nx-fo-jZM" firstAttribute="bottom" secondItem="a5d-4C-Dmp" secondAttribute="bottom" id="NXD-Ib-mEy"/>
+                            <constraint firstItem="a5d-4C-Dmp" firstAttribute="top" secondItem="7Nx-fo-jZM" secondAttribute="top" id="YcW-bD-kDY"/>
+                            <constraint firstItem="a5d-4C-Dmp" firstAttribute="leading" secondItem="7Nx-fo-jZM" secondAttribute="leading" id="egc-5R-vCu"/>
+                            <constraint firstItem="7Nx-fo-jZM" firstAttribute="trailing" secondItem="B8f-U5-brq" secondAttribute="trailing" constant="16" id="k6M-by-OtN"/>
+                            <constraint firstItem="7Nx-fo-jZM" firstAttribute="trailing" secondItem="8FG-Ol-Ltr" secondAttribute="trailing" constant="16" id="qW1-eB-1v9"/>
+                            <constraint firstItem="B8f-U5-brq" firstAttribute="leading" secondItem="7Nx-fo-jZM" secondAttribute="leading" constant="16" id="tcW-y1-lTF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Nx-fo-jZM"/>
+                    </view>
+                    <connections>
+                        <outlet property="address" destination="hfB-fZ-Ywv" id="3Js-5e-z9o"/>
+                        <outlet property="department" destination="F7S-76-0g0" id="FUA-Kr-rMt"/>
+                        <outlet property="email" destination="fpo-a8-RYY" id="Wbl-3v-7kZ"/>
+                        <outlet property="gender" destination="xd2-Wu-eLH" id="4Kt-dJ-GtM"/>
+                        <outlet property="id" destination="XXb-7W-mMy" id="0JL-C9-Lal"/>
+                        <outlet property="name" destination="V09-VQ-pBi" id="Cuu-eD-ajy"/>
+                        <outlet property="password" destination="1KK-uR-Qvh" id="fjB-WS-dy5"/>
+                        <outlet property="phone" destination="w2H-Yy-cu6" id="wdM-X2-OsX"/>
+                        <outlet property="submitButton" destination="DGg-iY-j31" id="Hts-e7-znF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vn1-QX-6QU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="172.26386806596702"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="employee_home_background" width="449" height="713"/>
+    </resources>
+</document>
