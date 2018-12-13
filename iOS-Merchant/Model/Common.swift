@@ -30,11 +30,11 @@ struct Common {
     
     // Server
     static let SERVER_URL: String = "http://192.168.50.124:8080/ShellService"
-    //static let SERVER_URL: String = "http://192.168.50.105:8080/ShellService"
+    //static let SERVER_URL: String = "http://10.1.1.3:8080/ShellService"
     
     // Websocket
     let SOCKET_URL: String = "ws://192.168.50.124:8080/ShellService/WsServer/"
-    //let SOCKET_URL: String = "ws://192.168.50.105:8080/ShellService/WsServer/"
+    //let SOCKET_URL: String = "ws://10.1.1.3:8080/ShellService/WsServer/"
 
     
     
