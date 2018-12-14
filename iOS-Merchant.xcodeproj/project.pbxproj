@@ -603,14 +603,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DW35N2WN73;
+				DEVELOPMENT_TEAM = 378NT6B6N9;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hwanghsin.iOS-Merchant";
+				PRODUCT_BUNDLE_IDENTIFIER = "hhl.com.iOS-Merchant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,14 +623,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DW35N2WN73;
+				DEVELOPMENT_TEAM = 378NT6B6N9;
 				INFOPLIST_FILE = "iOS-Merchant/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hwanghsin.iOS-Merchant";
+				PRODUCT_BUNDLE_IDENTIFIER = "hhl.com.iOS-Merchant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
