@@ -13,10 +13,15 @@ class CheckoutTableViewController: UITableViewController {
     
     var reservation: [Reservation]?
     var delegate: UIViewController?
+    var refresh = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
+        
+        refresh.attributedTitle = NSAttributedString(string: "更新資料")
+        refresh.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
+        tableView.refreshControl = refresh
     }
 
     // MARK: - Table view data source
@@ -84,6 +89,41 @@ class CheckoutTableViewController: UITableViewController {
             finalRoomDetailList[index].roomReservationStatus = status
         }
         return finalRoomDetailList
+    }
+    
+    @objc func refreshData() {
+        let payment: OrderPaymentDeatil = OrderPaymentDeatil()
+        let roomParams: [String: String] = ["action" : "viewRoomPayDetailByEmployee"]
+        let instantParams: [String: String] = ["action" : "viewInstantPayDetailByEmployee"]
+        
+        payment.viewRoomPayDetailByEmployee(roomParams).then { (ords) -> Promise<[OrderInstantDetail]> in
+            let rooms = Array(ords)
+            for (index, _) in self.reservation!.enumerated() {
+                self.reservation![index].checkout.removeAll()
+                for room in rooms {
+                    if room.roomGroup == self.reservation![index].id {
+                        self.reservation![index].checkout.append(room)
+                    }
+                }
+            }
+            return payment.viewInstantPayDetailByEmployee(instantParams)
+        }.done { (oids) in
+            let instants = Array(oids)
+            for (index, _) in self.reservation!.enumerated() {
+                self.reservation![index].instant.removeAll()
+                for instant in instants {
+                    if instant.roomGroup == self.reservation![index].id {
+                        self.reservation![index].instant.append(instant)
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.refresh.endRefreshing()
+            }
+        }.catch { (error) in
+            assertionFailure("CheckoutTableViewController Error: \(error)")
+        }
     }
 }
 
