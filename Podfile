@@ -11,7 +11,7 @@ target 'iOS-Merchant' do
   
   pod 'Alamofire'
   pod 'PromiseKit'
-  pod 'Starscream', '~> 3.0.2'
+  pod 'Starscream', '~> 3.0.6'
   pod 'Cosmos'
 
 end
