@@ -925,8 +925,35 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Ocz-Sz-nvw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="GcR-fZ-Z3J">
                                         <rect key="frame" x="0.0" y="322" width="375" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GcR-fZ-Z3J" id="n1V-lt-aF5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="房間號碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E1-q0-n2G">
+                                                    <rect key="frame" x="16" y="11" width="70" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="房號" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-2j-fSC">
+                                                    <rect key="frame" x="16" y="31" width="339" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <action selector="editingChangedBarButtonItemEnabled:" destination="Yly-GQ-JmX" eventType="editingDidEnd" id="qkT-Ma-HDk"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Ocz-Sz-nvw">
+                                        <rect key="frame" x="0.0" y="394" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ocz-Sz-nvw" id="qaU-bz-t1G">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -953,7 +980,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="wg7-ky-35o">
-                                        <rect key="frame" x="0.0" y="394" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="466" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wg7-ky-35o" id="ld1-J7-3hu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -980,7 +1007,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="ga8-tA-9SA">
-                                        <rect key="frame" x="0.0" y="466" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="538" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ga8-tA-9SA" id="dEX-Fz-d0C">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -1007,7 +1034,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Sq0-mg-YYp">
-                                        <rect key="frame" x="0.0" y="538" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="610" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sq0-mg-YYp" id="hb2-Ng-uXW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -1034,7 +1061,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="P2y-Oe-kdQ">
-                                        <rect key="frame" x="0.0" y="610" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="682" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P2y-Oe-kdQ" id="tL6-la-JkD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -1061,7 +1088,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Dri-gs-BW1">
-                                        <rect key="frame" x="0.0" y="682" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="754" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dri-gs-BW1" id="uHE-7w-6Bf">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
@@ -1115,6 +1142,7 @@
                         <outlet property="photoImageView" destination="tw5-jW-pN7" id="5tW-p0-rap"/>
                         <outlet property="priceTextField" destination="eXr-hs-TWK" id="1sL-Kr-5Sf"/>
                         <outlet property="roomImageView" destination="tw5-jW-pN7" id="ilF-Ln-wZT"/>
+                        <outlet property="roomNumberTextField" destination="zFQ-2j-fSC" id="gXZ-hO-TCz"/>
                         <outlet property="roomQuantityTextField" destination="3XJ-gv-WpG" id="kI2-Ug-nNb"/>
                         <outlet property="roomSizeTextField" destination="ORj-de-1Qg" id="MKA-bE-g7O"/>
                         <outlet property="savaBarButtonItem" destination="J1C-2t-VGR" id="4dn-Ep-Bof"/>
