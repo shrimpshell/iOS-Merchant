@@ -11,12 +11,25 @@ import UIKit
 struct Room: Codable {//建立struct Room格式化資料使用,須參考JSON結構來定義
     var id: Int
     var name: String
+    var roomNumber: String? = nil
     var roomSize: String
     var bed: String
     var adultQuantity: Int
     var childQuantity: Int
     var roomQuantity: Int
     var price: Int
+    
+    init(id: Int, name: String, roomNumber: String? = nil, roomSize: String, bed: String, adultQuantity: Int, childQuantity: Int, roomQuantity: Int, price: Int) {
+        self.id = id
+        self.name = name
+        self.roomNumber = roomNumber
+        self.roomSize = roomSize
+        self.bed = bed
+        self.adultQuantity = adultQuantity
+        self.childQuantity = childQuantity
+        self.roomQuantity = roomQuantity
+        self.price = price
+    }
 }
 
 typealias RoomDownloadDoneHandler = ([Room]?, Error?) -> Void//closure取別名
