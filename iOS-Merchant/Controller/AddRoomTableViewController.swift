@@ -15,6 +15,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
     
     let communicator = Communicator.shared
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var roomNumberTextField: UITextField!
     @IBOutlet weak var roomSizeTextField: UITextField!
     @IBOutlet weak var bedTextField: UITextField!
     @IBOutlet weak var adultQuantityTextField: UITextField!
@@ -81,6 +82,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
         let imageBase64 =  convertImageToBase64(image: roomImageView)
         
         let name = nameTextField.text!
+        let roomNumber = roomNumberTextField.text!
         let roomSize = roomSizeTextField.text!
         let bed = bedTextField.text!
         let adultQuantity = adultQuantityTextField.text!
@@ -91,6 +93,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
         
         
         guard name.count != 0 &&
+            roomNumber.count != 0 &&
             roomSize.count != 0 &&
             bed.count != 0 &&
             adultQuantity.count != 0 &&
@@ -117,6 +120,7 @@ class AddRoomTableViewController: UITableViewController, UIImagePickerController
         let room = Room(
             id: id,
             name: name,
+            roomNumber: roomNumber,
             roomSize: roomSize,
             bed: bed,
             adultQuantity: adultQuantityDB,
